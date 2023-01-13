@@ -25,8 +25,8 @@ public class EditDiaryEntryPupilCommentsActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(HomeScreen);
+                Intent EditDiaryEntryMenuScreen = new Intent(getApplicationContext(), EditDiaryEntryMenuActivity.class);
+                startActivity(EditDiaryEntryMenuScreen);
             }
         });
 
