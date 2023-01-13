@@ -15,25 +15,76 @@
         tools:targetApi="31">
         <activity
             android:name=".EditUsersActivity"
-            android:exported="false" />
+            android:label="Manage Users"
+            android:parentActivityName=".SettingsActivity">
+                <meta-data
+                    android:name="android.support.PARENT.ACTIVITY"
+                    android:value="com.tugoflaherty.readingdiary.SettingsActivity"
+                />
+        </activity>
         <activity
             android:name=".AddDiaryEntryTeacherCommentsActivity"
-            android:exported="false" />
+            android:label="Add Diary Entry - Teacher Comments"
+            android:parentActivityName=".AddDiaryEntryParentCommentsActivity">
+                <meta-data
+                    android:name="android.support.PARENT.ACTIVITY"
+                    android:value="com.tugoflaherty.readingdiary.AddDiaryEntryParentCommentsActivity"
+                />
+        </activity>
         <activity
             android:name=".AddDiaryEntryParentCommentsActivity"
-            android:exported="false" />
+            android:label="Add Diary Entry - Parent/Guardian Comments"
+            android:parentActivityName=".AddDiaryEntryPupilCommentsActivity">
+                <meta-data
+                    android:name="android.support.PARENT.ACTIVITY"
+                    android:value="com.tugoflaherty.readingdiary.AddDiaryEntryPupilCommentsActivity"
+                />
+        </activity>
         <activity
             android:name=".AddDiaryEntryPupilCommentsActivity"
-            android:exported="false" />
+            android:label="Add Diary Entry - Pupil Comments"
+            android:parentActivityName=".AddDiaryEntryInformationActivity">
+                <meta-data
+                    android:name="android.support.PARENT.ACTIVITY"
+                    android:value="com.tugoflaherty.readingdiary.AddDiaryEntryInformationActivity"
+                />
+        </activity>
         <activity
             android:name=".AddDiaryEntryInformationActivity"
-            android:exported="false" />
+            android:label="Add Diary Entry - Reading Information"
+            android:parentActivityName=".MainActivity">
+                <meta-data
+                    android:name="android.support.PARENT.ACTIVITY"
+                    android:value="com.tugoflaherty.readingdiary.MainActivity"
+                />
+        </activity>
         <activity
             android:name=".ViewReadingHistoryActivity"
-            android:exported="false" />
+            android:label="View Reading History"
+            android:parentActivityName=".MainActivity">
+                <meta-data
+                    android:name="android.support.PARENT.ACTIVITY"
+                    android:value="com.tugoflaherty.readingdiary.MainActivity"
+                />
+        </activity>
         <activity
             android:name=".ViewDiaryEntryActivity"
-            android:exported="false" />
+            android:label="View Diary Entry"
+            android:parentActivityName=".ViewReadingHistoryActivity">
+                <meta-data
+                    android:name="android.support.PARENT.ACTIVITY"
+                    android:value="com.tugoflaherty.readingdiary.ViewReadingHistoryActivity"
+                />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".MainActivity">
+                <meta-data
+                    android:name="android.support.PARENT.ACTIVITY"
+                    android:value="com.tugoflaherty.readingdiary.MainActivity"
+                />
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
