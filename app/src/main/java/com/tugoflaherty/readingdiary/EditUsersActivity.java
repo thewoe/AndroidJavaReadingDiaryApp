@@ -33,8 +33,8 @@ public class EditUsersActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(HomeScreen);
+                Intent SettingsScreen = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(SettingsScreen);
             }
         });
 
