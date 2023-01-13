@@ -15,8 +15,8 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary_entry_information);
 
-        Button cancel = (Button) findViewById(R.id.new_diary_entry_information_button_cancel);
-        Button next = (Button) findViewById(R.id.new_diary_entry_information_button_next);
+        Button cancel = (Button) findViewById(R.id.edit_diary_entry_information_button_cancel);
+        Button save = (Button) findViewById(R.id.edit_diary_entry_information_button_save);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.edit_diary_entry_information_navigation_button_home);
         ImageButton viewReadingHistoryNav = (ImageButton) findViewById(R.id.edit_diary_entry_information_navigation_button_history);
         ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.edit_diary_entry_information_navigation_button_add);
@@ -30,11 +30,11 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
             }
         });
 
-        next.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent AddDiaryEntryPupilCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryPupilCommentsActivity.class);
-                startActivity(AddDiaryEntryPupilCommentsScreen);
+                Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
+                startActivity(ViewDiaryEntryScreen);
             }
         });
 
