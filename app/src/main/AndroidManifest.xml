@@ -14,6 +14,27 @@
         android:theme="@style/Theme.ReadingDiary"
         tools:targetApi="31">
         <activity
+            android:name=".EditUsersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddDiaryEntryTeacherCommentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddDiaryEntryParentCommentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddDiaryEntryPupilCommentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddDiaryEntryInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewReadingHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewDiaryEntryActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
