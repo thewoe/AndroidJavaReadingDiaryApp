@@ -8,6 +8,30 @@
     tools:context=".AddDiaryEntryParentCommentsActivity"
     android:background="@drawable/background_image">
 
+    <Button
+        android:id="@+id/new_diary_entry_parent_comments_button_cancel"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/new_diary_entry_parent_comments_button_cancel"
+        app:backgroundTint="#216EF3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.234"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/new_diary_entry_parent_comments_button_next"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/new_diary_entry_parent_comments_button_next"
+        app:backgroundTint="#216EF3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintStart_toEndOf="@+id/new_diary_entry_parent_comments_button_cancel" />
+
     <ImageButton
         android:id="@+id/add_diary_entry_parent_comments_navigation_button_home"
         android:layout_width="wrap_content"

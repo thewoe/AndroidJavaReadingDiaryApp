@@ -8,6 +8,20 @@
     tools:context=".ViewReadingHistoryActivity"
     android:background="@drawable/background_image">
 
+    <Button
+        android:id="@+id/view_reading_history_button_view_entry"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginBottom="20dp"
+        android:text="Dummy - View Entry"
+        app:backgroundTint="#216EF3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <ImageButton
         android:id="@+id/view_reading_history_navigation_button_home"
         android:layout_width="wrap_content"

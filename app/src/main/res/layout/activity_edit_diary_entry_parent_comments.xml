@@ -5,15 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewDiaryEntryActivity"
+    tools:context=".EditDiaryEntryParentCommentsActivity"
     android:background="@drawable/background_image">
 
     <Button
-        android:id="@+id/view_diary_entry_button_edit"
+        android:id="@+id/edit_diary_entry_parent_comments_button_cancel"
         android:layout_width="125dp"
         android:layout_height="50dp"
         android:layout_marginBottom="80dp"
-        android:text="@string/view_diary_entry_button_edit"
+        android:text="@string/button_cancel"
         app:backgroundTint="#216EF3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,19 +21,19 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/view_diary_entry_button_delete"
+        android:id="@+id/edit_diary_entry_parent_comments_button_save"
         android:layout_width="125dp"
         android:layout_height="50dp"
         android:layout_marginBottom="80dp"
-        android:text="@string/view_diary_entry_button_delete"
+        android:text="@string/button_save"
         app:backgroundTint="#216EF3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.244"
-        app:layout_constraintStart_toEndOf="@+id/view_diary_entry_button_edit" />
+        app:layout_constraintStart_toEndOf="@+id/edit_diary_entry_parent_comments_button_cancel" />
 
     <ImageButton
-        android:id="@+id/view_diary_entry_navigation_button_home"
+        android:id="@+id/edit_diary_entry_parent_comments_navigation_button_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -45,7 +45,7 @@
         app:srcCompat="@drawable/home_icon" />
 
     <ImageButton
-        android:id="@+id/view_diary_entry_navigation_button_history"
+        android:id="@+id/edit_diary_entry_parent_comments_navigation_button_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -53,12 +53,12 @@
         android:layout_marginBottom="0dp"
         android:contentDescription="@string/home_view_reading_history"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view_diary_entry_navigation_button_home"
+        app:layout_constraintStart_toEndOf="@+id/edit_diary_entry_parent_comments_navigation_button_home"
         app:srcCompat="@drawable/list_icon"
         app:tint="#216EF3" />
 
     <ImageButton
-        android:id="@+id/view_diary_entry_navigation_button_add"
+        android:id="@+id/edit_diary_entry_parent_comments_navigation_button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -66,11 +66,11 @@
         android:layout_marginBottom="0dp"
         android:contentDescription="@string/new_diary_entry_information_screen_name"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view_diary_entry_navigation_button_history"
+        app:layout_constraintStart_toEndOf="@+id/edit_diary_entry_parent_comments_navigation_button_history"
         app:srcCompat="@drawable/add_icon" />
 
     <ImageButton
-        android:id="@+id/view_diary_entry_navigation_button_settings"
+        android:id="@+id/edit_diary_entry_parent_comments_navigation_button_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -78,14 +78,14 @@
         android:layout_marginBottom="0dp"
         android:contentDescription="@string/settings_screen_name"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view_diary_entry_navigation_button_add"
+        app:layout_constraintStart_toEndOf="@+id/edit_diary_entry_parent_comments_navigation_button_add"
         app:srcCompat="@drawable/settings_icon" />
 
     <TextView
-        android:id="@+id/viewdiaryentrytitle"
+        android:id="@+id/editdiaryentryparentcommentstitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Diary Entry Screen"
+        android:text="Edit Diary Entry Parent Comments Screen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

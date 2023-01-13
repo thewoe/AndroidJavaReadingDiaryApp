@@ -8,6 +8,30 @@
     tools:context=".EditUsersActivity"
     android:background="@drawable/background_image">
 
+    <Button
+        android:id="@+id/edit_users_button_cancel"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/edit_users_button_cancel"
+        app:backgroundTint="#216EF3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.234"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/edit_users_button_save"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/edit_users_button_save"
+        app:backgroundTint="#216EF3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintStart_toEndOf="@+id/edit_users_button_cancel" />
+
     <ImageButton
         android:id="@+id/edit_users_navigation_button_home"
         android:layout_width="wrap_content"

@@ -14,79 +14,112 @@
         android:theme="@style/Theme.ReadingDiary"
         tools:targetApi="31">
         <activity
+            android:name=".EditDiaryEntryMenuActivity"
+            android:label="Edit Entry Menu"
+            android:parentActivityName=".ViewReadingHistoryActivity">
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.ViewReadingHistoryActivity" />
+        </activity>
+        <activity
+            android:name=".EditDiaryEntryTeacherCommentsActivity"
+            android:label="Edit Entry - Teacher Comments"
+            android:parentActivityName=".EditDiaryEntryMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.EditDiaryEntryMenuActivity" />
+        </activity>
+        <activity
+            android:name=".EditDiaryEntryPupilCommentsActivity"
+            android:label="Edit Entry - Pupil Comments"
+            android:parentActivityName=".EditDiaryEntryMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.EditDiaryEntryMenuActivity" />
+        </activity>
+        <activity
+            android:name=".EditDiaryEntryParentCommentsActivity"
+            android:label="Edit Entry - Parent Comments"
+            android:parentActivityName=".EditDiaryEntryMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.EditDiaryEntryMenuActivity" />
+        </activity>
+        <activity
+            android:name=".EditDiaryEntryInformationActivity"
+            android:label="Edit Entry - Reading Info"
+            android:parentActivityName=".EditDiaryEntryMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.EditDiaryEntryMenuActivity" />
+        </activity>
+        <activity
             android:name=".EditUsersActivity"
             android:label="Manage Users"
             android:parentActivityName=".SettingsActivity">
-                <meta-data
-                    android:name="android.support.PARENT.ACTIVITY"
-                    android:value="com.tugoflaherty.readingdiary.SettingsActivity"
-                />
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.SettingsActivity" />
         </activity>
         <activity
             android:name=".AddDiaryEntryTeacherCommentsActivity"
-            android:label="Add Diary Entry - Teacher Comments"
+            android:label="Add Entry - Teacher Comments"
             android:parentActivityName=".AddDiaryEntryParentCommentsActivity">
-                <meta-data
-                    android:name="android.support.PARENT.ACTIVITY"
-                    android:value="com.tugoflaherty.readingdiary.AddDiaryEntryParentCommentsActivity"
-                />
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.AddDiaryEntryParentCommentsActivity" />
         </activity>
         <activity
             android:name=".AddDiaryEntryParentCommentsActivity"
-            android:label="Add Diary Entry - Parent/Guardian Comments"
+            android:label="Add Entry - Parent Comments"
             android:parentActivityName=".AddDiaryEntryPupilCommentsActivity">
-                <meta-data
-                    android:name="android.support.PARENT.ACTIVITY"
-                    android:value="com.tugoflaherty.readingdiary.AddDiaryEntryPupilCommentsActivity"
-                />
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.AddDiaryEntryPupilCommentsActivity" />
         </activity>
         <activity
             android:name=".AddDiaryEntryPupilCommentsActivity"
-            android:label="Add Diary Entry - Pupil Comments"
+            android:label="Add Entry - Pupil Comments"
             android:parentActivityName=".AddDiaryEntryInformationActivity">
-                <meta-data
-                    android:name="android.support.PARENT.ACTIVITY"
-                    android:value="com.tugoflaherty.readingdiary.AddDiaryEntryInformationActivity"
-                />
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.AddDiaryEntryInformationActivity" />
         </activity>
         <activity
             android:name=".AddDiaryEntryInformationActivity"
-            android:label="Add Diary Entry - Reading Information"
+            android:label="Add Entry - Reading Info"
             android:parentActivityName=".MainActivity">
-                <meta-data
-                    android:name="android.support.PARENT.ACTIVITY"
-                    android:value="com.tugoflaherty.readingdiary.MainActivity"
-                />
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.MainActivity" />
         </activity>
         <activity
             android:name=".ViewReadingHistoryActivity"
             android:label="View Reading History"
             android:parentActivityName=".MainActivity">
-                <meta-data
-                    android:name="android.support.PARENT.ACTIVITY"
-                    android:value="com.tugoflaherty.readingdiary.MainActivity"
-                />
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.MainActivity" />
         </activity>
         <activity
             android:name=".ViewDiaryEntryActivity"
-            android:label="View Diary Entry"
+            android:label="View Entry"
             android:parentActivityName=".ViewReadingHistoryActivity">
-                <meta-data
-                    android:name="android.support.PARENT.ACTIVITY"
-                    android:value="com.tugoflaherty.readingdiary.ViewReadingHistoryActivity"
-                />
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.ViewReadingHistoryActivity" />
         </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="Settings"
             android:parentActivityName=".MainActivity">
-                <meta-data
-                    android:name="android.support.PARENT.ACTIVITY"
-                    android:value="com.tugoflaherty.readingdiary.MainActivity"
-                />
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value="com.tugoflaherty.readingdiary.MainActivity" />
         </activity>
         <activity
             android:name=".MainActivity"
+            android:label="Reading Diary - Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

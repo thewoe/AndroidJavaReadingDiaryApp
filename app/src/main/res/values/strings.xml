@@ -45,6 +45,8 @@
     <string name="view_diary_entry_teacher_comments_title">Teacher Comments</string>
     <string name="view_diary_entry_teacher_comments_reading_progress_rating">Reading Progress Rating</string>
     <string name="view_diary_entry_teacher_comments_additional_comments">Additional Comments</string>
+    <string name="view_diary_entry_button_edit">Edit</string>
+    <string name="view_diary_entry_button_delete">Delete</string>
     <!-- view diary entry end   -->
 
     <!-- new diary entry information start -->
@@ -185,6 +187,22 @@
     <string name="edit_users_button_cancel">Cancel</string>
     <string name="edit_users_button_save">Save</string>
     <!-- edit users end   -->
+
+    <!-- edit button controls start -->
+    <string name="button_cancel">Cancel</string>
+    <string name="button_save">Save</string>
+    <!-- edit button controls end   -->
+
+    <!-- edit diary entry menu start -->
+    <string name="edit_diary_entry_menu_information">Edit Entry Information</string>
+    <string name="edit_diary_entry_menu_pupil_comments">Edit Pupil Comments</string>
+    <string name="edit_diary_entry_menu_parent_comments">Edit Parent Comments</string>
+    <string name="edit_diary_entry_menu_teacher_comments">Edit Teacher Comments</string>
+    <!-- edit diary entry menu end   -->
+
+    <!-- settings start -->
+    <string name="settings_button_manage_users">Manage Users</string>
+    <!-- settings end   -->
 
     <!-- english language end   -->
 </resources>
