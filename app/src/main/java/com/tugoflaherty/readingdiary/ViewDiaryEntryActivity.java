@@ -33,8 +33,8 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(HomeScreen);
+                Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
+                startActivity(ViewReadingHistoryScreen);
             }
         });
 
