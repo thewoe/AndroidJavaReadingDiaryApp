@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,16 +10,27 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="9500dp"
+        android:layout_height="0dp"
         android:contentDescription="@string/view_diary_entry_screen_name"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="140dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:contentDescription="@string/view_diary_entry_screen_name"
-                android:fillViewport="true">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/view_diary_entry_information_reading_information_title"
@@ -386,30 +397,22 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view_diary_entry_teacher_comments_additional_comments_title" />
 
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="350dp"
-                        android:contentDescription="Pupil image"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/view_diary_entry_teacher_comments_additional_comments"
-                        app:srcCompat="@drawable/pupil_image"
-                        android:layout_marginStart="350dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
 
-            <Button
-                android:id="@+id/view_diary_entry_button_edit"
-                android:layout_width="125dp"
-                android:layout_height="50dp"
-                android:layout_marginBottom="80dp"
-                android:text="@string/view_diary_entry_button_edit"
-                app:backgroundTint="@color/blue"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.234"
-                app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/view_diary_entry_button_edit"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="80dp"
+            android:text="@string/view_diary_entry_button_edit"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.234"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/view_diary_entry_button_delete"
@@ -474,4 +477,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
