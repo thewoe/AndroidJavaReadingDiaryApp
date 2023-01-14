@@ -19,9 +19,9 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="140dp">
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toTopOf="@+id/view_diary_entry_navigation_buttons">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -401,6 +401,14 @@
 
             </ScrollView>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view_diary_entry_navigation_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="@string/view_diary_entry_screen_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
         <Button
             android:id="@+id/view_diary_entry_button_edit"
             android:layout_width="125dp"
@@ -475,6 +483,7 @@
                 app:layout_constraintStart_toEndOf="@+id/view_diary_entry_navigation_button_add"
                 app:srcCompat="@drawable/settings_icon" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
