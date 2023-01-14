@@ -46,7 +46,16 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                <ImageButton
+                    android:id="@+id/view_diary_entry_button_email_diary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/home_screen_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/email_icon" />
+
+                <TextView
                         android:id="@+id/view_diary_entry_information_reading_information_start_date_time_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
