@@ -33,7 +33,7 @@
     <string name="view_diary_entry_book_information_book_title">Title</string>
     <string name="view_diary_entry_book_information_author_name">Author</string>
     <string name="view_diary_entry_page_information_title">Page Information</string>
-    <string name="view_diary_entry_page_information_pages_read">Pages read</string>
+    <string name="view_diary_entry_page_information_pages_read_title">Pages Read</string>
     <string name="view_diary_entry_page_information_pages_read_pages">pages</string>
     <string name="view_diary_entry_page_information_pages_read_percentage_read">% read</string>
     <string name="view_diary_entry_child_comments_title">Child Comments</string>
@@ -82,6 +82,7 @@
     <string name="new_diary_entry_pupil_comments_title">Pupil Comments</string>
     <string name="new_diary_entry_pupil_comments_enjoyment_rating_title">Enjoyment Rating</string>
     <string name="new_diary_entry_pupil_comments_enjoyment_rating_help">Did you like this book? Tap on the stars to rate it</string>
+    <string name="new_diary_entry_pupil_comments_enjoyment_rating_hint">Select a star rating out of five...</string>
     <string name="new_diary_entry_pupil_comments_enjoyment_rating_one_star_guide">One star means the book was boring and you wouldn\'t want to read it again</string>
     <string name="new_diary_entry_pupil_comments_enjoyment_rating_five_star_guide">Five stars means the book was really fun and you\'d love to read it again</string>
     <string name="new_diary_entry_pupil_comments_enjoyment_rating_happy_information">We\'re happy you liked the book - time to read some more!</string>
@@ -92,6 +93,7 @@
     <string name="new_diary_entry_pupil_comments_additional_comments_sad_guide">What didn\'t you like about the book? \n Was there anything you liked about the book? \n Was it easy to read?</string>
     <string name="new_diary_entry_pupil_comments_additional_comments_neutral_guide">What did you like about the book? \n Was didn\'t you like about the book? \n Was it easy to read?</string>
     <string name="new_diary_entry_pupil_comments_additional_comments_happy_guide">What did you really like about the book? \n Was there anything you didn\'t like about the book? \n Was it easy to read?</string>
+    <string name="new_diary_entry_pupil_comments_additional_comments_hint">Enter additional comments...</string>
     <string name="new_diary_entry_pupil_comments_button_new_comment">Add Another Comment</string>
     <string name="new_diary_entry_pupil_comments_name_title">Your Name</string>
     <string name="new_diary_entry_pupil_comments_name_help">Please choose your name from the list</string>
@@ -103,23 +105,19 @@
     <string name="new_diary_entry_parent_comments_screen_name">Add New Diary Entry - Parent/Guardian Comments</string>
     <string name="new_diary_entry_parent_comments_title">Parent/Guardian Comments</string>
     <string name="new_diary_entry_parent_comments_reading_ability_rating_title">Reading Ability Rating</string>
-    <string name="new_diary_entry_parent_comments_reading_ability_rating_help_name">Was </string>
-    <string name="new_diary_entry_parent_comments_reading_ability_rating_help_advice"> a confident reader? Did you notice any struggles or lack of understanding when </string>
-    <string name="new_diary_entry_parent_comments_reading_ability_rating_help_concluding_advice"> was reading?</string>
-    <string name="new_diary_entry_parent_comments_reading_ability_rating_one_star_guide_name">One star means </string>
-    <string name="new_diary_entry_parent_comments_reading_ability_rating_one_star_guide_help"> struggled lots when reading, or didn\'t understand lots of the words or storyline</string>
-    <string name="new_diary_entry_parent_comments_reading_ability_rating_five_star_guide_name">Five stars means </string>
-    <string name="new_diary_entry_parent_comments_reading_ability_rating_five_star_guide_help"> read the book with ease, and had no gaps in knowledge or understanding</string>
+    <string name="new_diary_entry_parent_comments_reading_ability_rating_help">Was your child a confident reader? Did you notice any struggles or lack of understanding when they were reading?</string>
+    <string name="new_diary_entry_parent_comments_reading_ability_rating_one_star_guide_help">One star means they struggled lots when reading, or didn\'t understand lots of the words or storyline</string>
+    <string name="new_diary_entry_parent_comments_reading_ability_rating_five_star_guide_help">Five stars means they read the book with ease, and had no gaps in knowledge or understanding</string>
+    <string name="new_diary_entry_parent_comments_reading_ability_rating_hint">Select a star rating out of five...</string>
     <string name="new_diary_entry_parent_comments_reading_ability_rating_happy_information">We\'re pleased you didn\'t notice any struggles - maybe the next book should be more challenging!</string>
     <string name="new_diary_entry_parent_comments_reading_ability_rating_neutral_information">We\'re pleased you didn\'t notice any major difficulties - the book was at the right level</string>
     <string name="new_diary_entry_parent_comments_reading_ability_rating_sad_information">We\'re sad to hear you noticed lots of struggling - the next book should be less challenging</string>
     <string name="new_diary_entry_parent_comments_additional_comments_title">Comments</string>
-    <string name="new_diary_entry_parent_comments_additional_comments_help_name">Please tell us a bit more about your experience of supervising  book</string>
-    <string name="new_diary_entry_parent_comments_additional_comments_help_advice"> \'s reading journey</string>
+    <string name="new_diary_entry_parent_comments_additional_comments_help">Please tell us a bit more about your experience of supervising you child\'s reading</string>
     <string name="new_diary_entry_parent_comments_additional_comments_sad_guide">What struggles did you notice? \n Were there any words you had to explain the meaning of?</string>
     <string name="new_diary_entry_parent_comments_additional_comments_neutral_guide">What struggles did you notice? \n How frequent were these? Were there any words you had to explain the meaning of?</string>
     <string name="new_diary_entry_parent_comments_additional_comments_happy_guide">Do you think the book was not challenging enough?</string>
-    <string name="new_diary_entry_parent_comments_button_new_comment">Add Another Comment</string>
+    <string name="new_diary_entry_parent_comments_additional_comments_hint">Enter additional comments...</string>
     <string name="new_diary_entry_parent_comments_name_title">Your Name</string>
     <string name="new_diary_entry_parent_comments_name_help">Please choose your name from the list</string>
     <string name="new_diary_entry_parent_comments_button_cancel">Cancel</string>
@@ -130,22 +128,20 @@
     <string name="new_diary_entry_teacher_comments_screen_name">Add New Diary Entry - Teacher Comments</string>
     <string name="new_diary_entry_teacher_comments_title">Teacher Comments</string>
     <string name="new_diary_entry_teacher_comments_reading_progress_rating_title">Reading Progress Rating</string>
-    <string name="new_diary_entry_teacher_comments_reading_progress_rating_help_name"> How is </string>
-    <string name="new_diary_entry_teacher_comments_reading_progress_rating_help_advice"> \'s progress? Is </string>
-    <string name="new_diary_entry_teacher_comments_reading_progress_rating_help_concluding_advice"> reading at the expected level, and for a suitable amount of time?</string>
-    <string name="new_diary_entry_teacher_comments_reading_progress_rating_one_star_guide_name">One star means </string>
-    <string name="new_diary_entry_teacher_comments_reading_progress_rating_one_star_guide_help"> is not reading complex enough books, is struggling with the expected reading level, or is not reading for long enough</string>
-    <string name="new_diary_entry_teacher_comments_reading_progress_rating_five_star_guide_name">Five stars means </string>
-    <string name="new_diary_entry_teacher_comments_reading_progress_rating_five_star_guide_help"> is reading complex books without struggling, at a higher than expected reading level, and for a suitable amount of time</string>
+    <string name="new_diary_entry_teacher_comments_reading_progress_rating_help">How is the pupil\'s progress? Are they reading at the expected level, and for a suitable amount of time?</string>
+    <string name="new_diary_entry_teacher_comments_reading_progress_rating_one_star_guide_help">One star means they are not reading complex enough books, is struggling with the expected reading level, or is not reading for long enough</string>
+    <string name="new_diary_entry_teacher_comments_reading_progress_rating_five_star_guide_help">Five stars means they are reading complex books without struggling, at a higher than expected reading level, and for a suitable amount of time</string>
+    <string name="new_diary_entry_teacher_comments_reading_progress_rating_hint">Select a star rating out of five...</string>
     <string name="new_diary_entry_teacher_comments_reading_progress_rating_happy_information">Recommendation: the next book should be more challenging</string>
     <string name="new_diary_entry_teacher_comments_reading_progress_rating_neutral_information">Recommendation: the next book should be at the same difficulty level</string>
     <string name="new_diary_entry_teacher_comments_reading_progress_rating_sad_information">Recommendation: the next book should be less challenging</string>
     <string name="new_diary_entry_teacher_comments_additional_comments_title">Comments</string>
-    <string name="new_diary_entry_teacher_comments_additional_comments_help_name">Provide any additional comments below. Comments may discuss book complexity, reading level difficulty, amount of time spent reading, or difficulty level of next book</string>
+    <string name="new_diary_entry_teacher_comments_additional_comments_help">Provide any additional comments below. Comments may discuss book complexity, reading level difficulty, amount of time spent reading, or difficulty level of next book</string>
     <string name="new_diary_entry_teacher_comments_additional_comments_sad_guide">Potential feedback: Reading level is below expectations, book complexity should be increased, reading amount should be increased </string>
     <string name="new_diary_entry_teacher_comments_additional_comments_neutral_guide">Potential feedback: Reading level is good, book complexity is appropriate, reading amount is suitable</string>
     <string name="new_diary_entry_teacher_comments_additional_comments_happy_guide">Potential feedback Reading level is excellent, book complexity is perfect, reading amount is brilliant</string>
     <string name="new_diary_entry_teacher_comments_button_new_comment">Add Another Comment</string>
+    <string name="new_diary_entry_teacher_comments_additional_comments_hint">Enter additional comments...</string>
     <string name="new_diary_entry_teacher_comments_name_title">Your Name</string>
     <string name="new_diary_entry_teacher_comments_name_help">Please choose your name from the list</string>
     <string name="new_diary_entry_teacher_comments_button_cancel">Cancel</string>
@@ -172,15 +168,15 @@
 
     <!-- edit users start -->
     <string name="edit_users_screen_name">Edit Users</string>
-    <string name="edit_users_pupils_section_title">Pupils</string>
+    <string name="edit_users_pupils_section_title">Pupil</string>
     <string name="edit_users_pupils_title">Pupil\'s name</string>
     <string name="edit_users_pupils_help">Please enter the pupil\'s name</string>
     <string name="edit_users_pupils_button_new_pupil">Add Another Pupil</string>
-    <string name="edit_users_parents_section_title">Parents/Guardians</string>
+    <string name="edit_users_parents_section_title">Parent/Guardian</string>
     <string name="edit_users_parents_title">Parent/Guardian\'s name</string>
     <string name="edit_users_parents_help">Please enter the parent/guardian\'s name</string>
     <string name="edit_users_parents_button_new_parent">Add Another Parent/Guardian</string>
-    <string name="edit_users_teachers_section_title">Teachers</string>
+    <string name="edit_users_teachers_section_title">Teacher</string>
     <string name="edit_users_teachers_title">Teacher\'s name</string>
     <string name="edit_users_teachers_help">Please enter the teacher\'s name</string>
     <string name="edit_users_teachers_button_new_teacher">Add Another Teacher</string>
@@ -194,6 +190,7 @@
     <!-- edit button controls end   -->
 
     <!-- edit diary entry menu start -->
+    <string name="edit_diary_entry_menu_title">Edit Entry Menu</string>
     <string name="edit_diary_entry_menu_information">Edit Entry Information</string>
     <string name="edit_diary_entry_menu_pupil_comments">Edit Pupil Comments</string>
     <string name="edit_diary_entry_menu_parent_comments">Edit Parent Comments</string>

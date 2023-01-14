@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view_reading_history_navigation_button_home"
         app:srcCompat="@drawable/list_icon"
-        app:tint="#216EF3" />
+        app:tint="@color/blue" />
 
     <ImageButton
         android:id="@+id/view_reading_history_navigation_button_add"
