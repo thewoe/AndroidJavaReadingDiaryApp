@@ -25,6 +25,7 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
+                ViewDiaryEntryScreen.putExtra("diaryEntryId",1); //hardcoded temporarily - must be dynamic from db from clicked list item
                 startActivity(ViewDiaryEntryScreen);
             }
         });

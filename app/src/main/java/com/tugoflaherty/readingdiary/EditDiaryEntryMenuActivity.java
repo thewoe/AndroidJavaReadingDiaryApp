@@ -14,6 +14,8 @@ public class EditDiaryEntryMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary_entry_menu);
+        int diaryEntryId = getIntent().getIntExtra("diaryEntryId",-1);
+
 
         Button editDiaryEntryInformation = (Button) findViewById(R.id.edit_diary_entry_menu_button_information);
         Button editDiaryEntryPupilComments = (Button) findViewById(R.id.edit_diary_entry_menu_button_pupil_comments);
@@ -28,6 +30,7 @@ public class EditDiaryEntryMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent EditDiaryEntryInformationScreen = new Intent(getApplicationContext(), EditDiaryEntryInformationActivity.class);
+                EditDiaryEntryInformationScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(EditDiaryEntryInformationScreen);
             }
         });
@@ -36,6 +39,7 @@ public class EditDiaryEntryMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent EditDiaryEntryPupilCommentsScreen = new Intent(getApplicationContext(), EditDiaryEntryPupilCommentsActivity.class);
+                EditDiaryEntryPupilCommentsScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(EditDiaryEntryPupilCommentsScreen);
             }
         });
@@ -44,6 +48,7 @@ public class EditDiaryEntryMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent EditDiaryEntryParentCommentsScreen = new Intent(getApplicationContext(), EditDiaryEntryParentCommentsActivity.class);
+                EditDiaryEntryParentCommentsScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(EditDiaryEntryParentCommentsScreen);
             }
         });
@@ -52,6 +57,7 @@ public class EditDiaryEntryMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent EditDiaryEntryTeacherCommentsScreen = new Intent(getApplicationContext(), EditDiaryEntryTeacherCommentsActivity.class);
+                EditDiaryEntryTeacherCommentsScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(EditDiaryEntryTeacherCommentsScreen);
             }
         });

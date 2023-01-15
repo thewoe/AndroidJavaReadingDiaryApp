@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 
 public class AddDiaryEntryPupilCommentsActivity extends AppCompatActivity {
 
@@ -15,6 +18,8 @@ public class AddDiaryEntryPupilCommentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diary_entry_pupil_comments);
 
+        RatingBar enjoymentRatingInputField = (RatingBar) findViewById(R.id.new_diary_entry_pupil_comments_enjoyment_rating_bar);
+        EditText pupilCommentsInputField = (EditText) findViewById(R.id.new_pupil_comments_input);
         Button cancel = (Button) findViewById(R.id.new_diary_entry_pupil_comments_button_cancel);
         Button next = (Button) findViewById(R.id.new_diary_entry_pupil_comments_button_next);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.add_diary_entry_pupil_comments_navigation_button_home);
@@ -25,6 +30,8 @@ public class AddDiaryEntryPupilCommentsActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                enjoymentRatingInputField.setRating(0.0F);
+                pupilCommentsInputField.setText("");
                 Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(HomeScreen);
             }
@@ -33,8 +40,21 @@ public class AddDiaryEntryPupilCommentsActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent AddDiaryEntryParentCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryParentCommentsActivity.class);
-                startActivity(AddDiaryEntryParentCommentsScreen);
+                boolean fieldsCompleted = true;
+                Float enjoymentRating = 0.0F;
+                String pupilComments = "";
+                enjoymentRating = enjoymentRatingInputField.getRating();
+                pupilComments = pupilCommentsInputField.getText().toString();
+                if ((pupilComments.equals(null)) || (pupilComments.equals(""))) {
+                    pupilCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    Log.i("reading start date","Rejected");
+                    fieldsCompleted = false;
+                }
+                if (fieldsCompleted == true) {
+                    Log.i("NEXT - ACCEPTED","Enjoyment Rating: "+enjoymentRating+" Pupil Comments: "+pupilComments);
+                    Intent AddDiaryEntryParentCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryParentCommentsActivity.class);
+                    startActivity(AddDiaryEntryParentCommentsScreen);
+                }
             }
         });
 

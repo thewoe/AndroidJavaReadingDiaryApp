@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class EditDiaryEntryInformationActivity extends AppCompatActivity {
@@ -14,7 +16,15 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary_entry_information);
+        int diaryEntryId = getIntent().getIntExtra("diaryEntryId",-1);
 
+        EditText readingStartInputField = (EditText) findViewById(R.id.edit_reading_start_datetime_input);
+        EditText readingEndInputField = (EditText) findViewById(R.id.edit_reading_end_datetime_input);
+        EditText bookTitleInputField = (EditText) findViewById(R.id.edit_book_title_input);
+        EditText bookAuthorInputField = (EditText) findViewById(R.id.edit_book_author_input);
+        EditText pageCountInputField = (EditText) findViewById(R.id.edit_page_count_input);
+        EditText startPageInputField = (EditText) findViewById(R.id.edit_start_page_input);
+        EditText endPageInputField = (EditText) findViewById(R.id.edit_end_page_input);
         Button cancel = (Button) findViewById(R.id.edit_diary_entry_information_button_cancel);
         Button save = (Button) findViewById(R.id.edit_diary_entry_information_button_save);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.edit_diary_entry_information_navigation_button_home);
@@ -22,10 +32,19 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
         ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.edit_diary_entry_information_navigation_button_add);
         ImageButton settingsNav = (ImageButton) findViewById(R.id.edit_diary_entry_information_navigation_button_settings);
 
+        readingStartInputField.setText("Example");
+        readingEndInputField.setText("Example");
+        bookTitleInputField.setText("Example");
+        bookAuthorInputField.setText("Example");
+        pageCountInputField.setText("Example");
+        startPageInputField.setText("Example");
+        endPageInputField.setText("Example");
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent EditDiaryEntryMenuScreen = new Intent(getApplicationContext(), EditDiaryEntryMenuActivity.class);
+                EditDiaryEntryMenuScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(EditDiaryEntryMenuScreen);
             }
         });
@@ -33,8 +52,94 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
-                startActivity(ViewDiaryEntryScreen);
+                boolean fieldsCompleted = true;
+                String readingStart = readingStartInputField.getText().toString();
+                String readingEnd = readingEndInputField.getText().toString();
+                String bookTitle = bookTitleInputField.getText().toString();
+                String bookAuthor = bookAuthorInputField.getText().toString();
+                String pageCountString = pageCountInputField.getText().toString();
+                String startPageString = startPageInputField.getText().toString();
+                String endPageString = endPageInputField.getText().toString();
+                Integer pageCount = 0, startPage = 0, endPage = 0;
+                if ((readingStart.equals(null)) || (readingStart.equals(""))) {
+                    readingStartInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    Log.i("reading start date","Rejected");
+                    fieldsCompleted = false;
+                }
+                if ((readingEnd.equals(null)) || (readingEnd.equals(""))) {
+                    readingEndInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    fieldsCompleted = false;
+                    Log.i("reading end date","Rejected");
+                }
+                if ((bookTitle.equals(null)) || (bookTitle.equals(""))) {
+                    bookTitleInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    fieldsCompleted = false;
+                    Log.i("book title","Rejected");
+                }
+                if ((bookAuthor.equals(null)) || (bookAuthor.equals(""))) {
+                    bookAuthorInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    fieldsCompleted = false;
+                    Log.i("author","Rejected");
+                }
+                if ((!pageCountString.equals(null)) && (!pageCountString.equals(""))) {
+                    try {
+                        pageCount = Integer.parseInt(pageCountString);
+                        if (pageCount < 1) {
+                            endPageInputField.setTextColor(getResources().getColor(R.color.red));
+                            pageCountInputField.setHintTextColor(getResources().getColor(R.color.red));
+                            fieldsCompleted = false;
+                            Log.i("page count less than 1","Rejected");
+                        }
+                    }
+                    catch (Exception e) {
+                        endPageInputField.setTextColor(getResources().getColor(R.color.red));
+                        pageCountInputField.setHintTextColor(getResources().getColor(R.color.red));
+                        fieldsCompleted = false;
+                        Log.i("page count parse error","Rejected");
+                    }
+                }
+                if ((!startPageString.equals(null)) && (!startPageString.equals(""))) {
+                    try {
+                        startPage = Integer.parseInt(startPageString);
+                        if ((startPage < 1) || (startPage > pageCount)) {
+                            endPageInputField.setTextColor(getResources().getColor(R.color.red));
+                            startPageInputField.setHintTextColor(getResources().getColor(R.color.red));
+                            fieldsCompleted = false;
+                            Log.i("startpage<|>pagecount","Rejected");
+                        }
+                    }
+                    catch (Exception e) {
+                        endPageInputField.setTextColor(getResources().getColor(R.color.red));
+                        startPageInputField.setHintTextColor(getResources().getColor(R.color.red));
+                        fieldsCompleted = false;
+                        Log.i("start page parse error","Rejected");
+                    }
+                }
+                if ((!endPageString.equals(null)) && (!endPageString.equals(""))) {
+                    try {
+                        endPage = Integer.parseInt(endPageString);
+                        if ((endPage < 1) || (endPage > pageCount) || (endPage < startPage)) {
+                            endPageInputField.setTextColor(getResources().getColor(R.color.red));
+                            endPageInputField.setHintTextColor(getResources().getColor(R.color.red));
+                            fieldsCompleted = false;
+                            Log.i("Endpage issue","Rejected");
+                        }
+                    }
+                    catch (Exception e) {
+                        endPageInputField.setTextColor(getResources().getColor(R.color.red));
+                        endPageInputField.setHintTextColor(getResources().getColor(R.color.red));
+                        fieldsCompleted = false;
+                        Log.i("Endpage parse error","Rejected");
+                    }
+                }
+                if (fieldsCompleted == true) {
+                    Log.i("NEXT - ACCEPTED","Reading Start Time: "+readingStart+" Reading End Time: "+readingEnd+" Book Title: "+bookTitle+" Book Author: "+bookAuthor+" Page Count: "+pageCount+" Start Page: "+startPage+" End Page: "+endPage);
+                    Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
+                    startActivity(ViewDiaryEntryScreen);
+                }
+                else {
+                    Log.i("NEXT - REJECTED", "Rejected: " + fieldsCompleted);
+                }
             }
         });
 

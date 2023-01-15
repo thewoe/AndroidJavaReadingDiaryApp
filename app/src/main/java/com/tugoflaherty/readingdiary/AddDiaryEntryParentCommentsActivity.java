@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 
 public class AddDiaryEntryParentCommentsActivity extends AppCompatActivity {
 
@@ -15,6 +18,8 @@ public class AddDiaryEntryParentCommentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diary_entry_parent_comments);
 
+        RatingBar readingAbilityRatingInputField = (RatingBar) findViewById(R.id.new_diary_entry_parent_comments_reading_ability_rating_bar);
+        EditText parentCommentsInputField = (EditText) findViewById(R.id.new_parent_comments_input);
         Button cancel = (Button) findViewById(R.id.new_diary_entry_parent_comments_button_cancel);
         Button next = (Button) findViewById(R.id.new_diary_entry_parent_comments_button_next);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.add_diary_entry_parent_comments_navigation_button_home);
@@ -25,6 +30,8 @@ public class AddDiaryEntryParentCommentsActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                readingAbilityRatingInputField.setRating(0.0F);
+                parentCommentsInputField.setText("");
                 Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(HomeScreen);
             }
@@ -33,8 +40,21 @@ public class AddDiaryEntryParentCommentsActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent AddDiaryEntryTeacherCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryTeacherCommentsActivity.class);
-                startActivity(AddDiaryEntryTeacherCommentsScreen);
+                boolean fieldsCompleted = true;
+                Float readingAbilityRating = 0.0F;
+                String parentComments = "";
+                readingAbilityRating = readingAbilityRatingInputField.getRating();
+                parentComments = parentCommentsInputField.getText().toString();
+                if ((parentComments.equals(null)) || (parentComments.equals(""))) {
+                    parentCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    Log.i("reading start date","Rejected");
+                    fieldsCompleted = false;
+                }
+                if (fieldsCompleted == true) {
+                    Log.i("NEXT - ACCEPTED","Reading Ability Rating: "+readingAbilityRating+" Parent Comments: "+parentComments);
+                    Intent AddDiaryEntryTeacherCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryTeacherCommentsActivity.class);
+                    startActivity(AddDiaryEntryTeacherCommentsScreen);
+                }
             }
         });
 

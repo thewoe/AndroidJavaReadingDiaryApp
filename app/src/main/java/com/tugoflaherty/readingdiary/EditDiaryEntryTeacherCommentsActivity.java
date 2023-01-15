@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 
 public class EditDiaryEntryTeacherCommentsActivity extends AppCompatActivity {
 
@@ -14,7 +17,10 @@ public class EditDiaryEntryTeacherCommentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary_entry_teacher_comments);
+        int diaryEntryId = getIntent().getIntExtra("diaryEntryId",-1);
 
+        RatingBar readingProgressInputField = (RatingBar) findViewById(R.id.edit_diary_entry_teacher_comments_reading_progress_rating_bar);
+        EditText teacherCommentsInputField = (EditText) findViewById(R.id.edit_teacher_comments_input);
         Button cancel = (Button) findViewById(R.id.edit_diary_entry_teacher_comments_button_cancel);
         Button save = (Button) findViewById(R.id.edit_diary_entry_teacher_comments_button_save);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.edit_diary_entry_teacher_comments_navigation_button_home);
@@ -26,6 +32,7 @@ public class EditDiaryEntryTeacherCommentsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent EditDiaryEntryMenuScreen = new Intent(getApplicationContext(), EditDiaryEntryMenuActivity.class);
+                EditDiaryEntryMenuScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(EditDiaryEntryMenuScreen);
             }
         });
@@ -33,8 +40,22 @@ public class EditDiaryEntryTeacherCommentsActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
-                startActivity(ViewDiaryEntryScreen);
+                boolean fieldsCompleted = true;
+                Float readingProgressRating = 0.0F;
+                String teacherComments = "";
+                readingProgressRating = readingProgressInputField.getRating();
+                teacherComments = teacherCommentsInputField.getText().toString();
+                if ((teacherComments.equals(null)) || (teacherComments.equals(""))) {
+                    teacherCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    Log.i("reading start date","Rejected");
+                    fieldsCompleted = false;
+                }
+                if (fieldsCompleted == true) {
+                    Log.i("NEXT - ACCEPTED","Reading Progress Rating: "+readingProgressRating+" Teacher Comments: "+teacherComments);
+                    Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
+                    ViewDiaryEntryScreen.putExtra("diaryEntryId",diaryEntryId);
+                    startActivity(ViewDiaryEntryScreen);
+                }
             }
         });
 

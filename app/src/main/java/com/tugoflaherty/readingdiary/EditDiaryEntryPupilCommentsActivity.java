@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 
 public class EditDiaryEntryPupilCommentsActivity extends AppCompatActivity {
 
@@ -14,7 +17,10 @@ public class EditDiaryEntryPupilCommentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary_entry_pupil_comments);
+        int diaryEntryId = getIntent().getIntExtra("diaryEntryId",-1);
 
+        RatingBar enjoymentRatingInputField = (RatingBar) findViewById(R.id.edit_diary_entry_pupil_comments_enjoyment_rating_bar);
+        EditText pupilCommentsInputField = (EditText) findViewById(R.id.edit_pupil_comments_input);
         Button cancel = (Button) findViewById(R.id.edit_diary_entry_pupil_comments_button_cancel);
         Button save = (Button) findViewById(R.id.edit_diary_entry_pupil_comments_button_save);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.edit_diary_entry_pupil_comments_navigation_button_home);
@@ -26,6 +32,7 @@ public class EditDiaryEntryPupilCommentsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent EditDiaryEntryMenuScreen = new Intent(getApplicationContext(), EditDiaryEntryMenuActivity.class);
+                EditDiaryEntryMenuScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(EditDiaryEntryMenuScreen);
             }
         });
@@ -33,8 +40,22 @@ public class EditDiaryEntryPupilCommentsActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
-                startActivity(ViewDiaryEntryScreen);
+                boolean fieldsCompleted = true;
+                Float enjoymentRating = 0.0F;
+                String pupilComments = "";
+                enjoymentRating = enjoymentRatingInputField.getRating();
+                pupilComments = pupilCommentsInputField.getText().toString();
+                if ((pupilComments.equals(null)) || (pupilComments.equals(""))) {
+                    pupilCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    Log.i("reading start date","Rejected");
+                    fieldsCompleted = false;
+                }
+                if (fieldsCompleted == true) {
+                    Log.i("NEXT - ACCEPTED","Enjoyment Rating: "+enjoymentRating+" Pupil Comments: "+pupilComments);
+                    Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
+                    ViewDiaryEntryScreen.putExtra("diaryEntryId",diaryEntryId);
+                    startActivity(ViewDiaryEntryScreen);
+                }
             }
         });
 

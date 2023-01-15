@@ -14,6 +14,7 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_diary_entry);
+        int diaryEntryId = getIntent().getIntExtra("diaryEntryId",-1);
 
         Button edit = (Button) findViewById(R.id.view_diary_entry_button_edit);
         Button delete = (Button) findViewById(R.id.view_diary_entry_button_delete);
@@ -26,6 +27,7 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent EditDiaryEntryMenuScreen = new Intent(getApplicationContext(), EditDiaryEntryMenuActivity.class);
+                EditDiaryEntryMenuScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(EditDiaryEntryMenuScreen);
             }
         });
