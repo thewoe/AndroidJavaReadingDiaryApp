@@ -27,6 +27,7 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
                 Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
                 ViewDiaryEntryScreen.putExtra("diaryEntryId",1); //hardcoded temporarily - must be dynamic from db from clicked list item
                 startActivity(ViewDiaryEntryScreen);
+                finish();
             }
         });
 
@@ -35,6 +36,7 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(HomeScreen);
+                finish();
             }
         });
 
@@ -51,6 +53,7 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent AddDiaryEntryScreen = new Intent(getApplicationContext(), AddDiaryEntryInformationActivity.class);
                 startActivity(AddDiaryEntryScreen);
+                finish();
             }
         });
 
@@ -59,6 +62,7 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent SettingsScreen = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(SettingsScreen);
+                finish();
             }
         });
     }
