@@ -10,11 +10,15 @@ import android.widget.ImageButton;
 
 public class ViewDiaryEntryActivity extends AppCompatActivity {
 
+    myDbAdapter helper;
+    String diaryEntryId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_diary_entry);
-        int diaryEntryId = getIntent().getIntExtra("diaryEntryId",-1);
+        diaryEntryId = getIntent().getStringExtra("diaryEntryId");
+        helper = new myDbAdapter(this);
 
         Button edit = (Button) findViewById(R.id.view_diary_entry_button_edit);
         Button delete = (Button) findViewById(R.id.view_diary_entry_button_delete);
@@ -35,8 +39,7 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
-                startActivity(ViewReadingHistoryScreen);
+                deleteDiaryEntry(v);
             }
         });
 
@@ -71,5 +74,16 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
                 startActivity(SettingsScreen);
             }
         });
+    }
+    public void deleteDiaryEntry(View view) {
+        int count = helper.deleteDiaryEntry(diaryEntryId);
+        if (count <= 0) {
+            Message.message(getApplicationContext(), "Delete Unsuccessful - Please Try Again");
+        }
+        else {
+            Message.message(getApplicationContext(), "Delete Successful");
+            Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
+            startActivity(ViewReadingHistoryScreen);
+        }
     }
 }
