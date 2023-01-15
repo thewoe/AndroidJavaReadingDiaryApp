@@ -37,7 +37,7 @@ public class EditUsersActivity extends AppCompatActivity {
 
         if ((!helper.getUserData().equals(null)) && (!helper.getUserData().equals(""))) {
             String returnedData = helper.getUserData();
-            String[] userData = returnedData.split(",");
+            String[] userData = returnedData.split("¬");
             uid = userData[0];
             pupilNameInputField.setText(userData[1]);
             parentNameInputField.setText(userData[2]);

@@ -36,7 +36,7 @@ public class myDbAdapter {
             String pupilName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PUPIL_NAME));
             String parentName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PARENT_NAME));
             String teacherName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TEACHER_NAME));
-            buffer.append(uid+","+pupilName+","+parentName+","+teacherName);
+            buffer.append(uid+"¬"+pupilName+"¬"+parentName+"¬"+teacherName);
         }
         return buffer.toString();
     }
@@ -58,7 +58,10 @@ public class myDbAdapter {
         int count = db.update(myDbHelper.USERS_TABLE_NAME, contentValues, myDbHelper.UID+" = ?", whereArgs);
         return count;
     }
-    public long insertDiaryEntryData(String readingStartDateTime, String readingEndDateTime, String bookTitle, String bookAuthor, String pageCount, String startPage, String endPage, String pupilEnjoymentRating, String pupilComments, String parentReadingAbilityRating, String parentComments, String teacherReadingProgressRating, String teacherComments, String userId) {
+
+    public long insertDiaryEntryData(String readingStartDateTime, String readingEndDateTime, String bookTitle, String bookAuthor,
+                                     String pageCount, String startPage, String endPage, String pupilEnjoymentRating, String pupilComments, String parentReadingAbilityRating,
+                                     String parentComments, String teacherReadingProgressRating, String teacherComments, String userId) {
         SQLiteDatabase db = myHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(myDbHelper.READING_START_DATE_TIME, readingStartDateTime);
@@ -75,9 +78,110 @@ public class myDbAdapter {
         contentValues.put(myDbHelper.TEACHER_READING_PROGRESS_RATING, teacherReadingProgressRating);
         contentValues.put(myDbHelper.TEACHER_COMMENTS, teacherComments);
         contentValues.put(myDbHelper.USER_ID, userId);
-        long id = db.insert(myDbHelper.USERS_TABLE_NAME, null, contentValues);
+        long id = db.insert(myDbHelper.DIARY_ENTRIES_TABLE_NAME, null, contentValues);
         return id;
     }
+
+    public String getDiaryEntryDataById(String givenUid) {
+        SQLiteDatabase db = myHelper.getWritableDatabase();
+        String[] whereArgs = {givenUid};
+        String[] columns = {myDbHelper.UID, myDbHelper.READING_START_DATE_TIME, myDbHelper.READING_END_DATE_TIME, myDbHelper.BOOK_TITLE, myDbHelper.BOOK_AUTHOR,
+                myDbHelper.PAGE_COUNT, myDbHelper.START_PAGE, myDbHelper.END_PAGE, myDbHelper.PUPIL_ENJOYMENT_RATING, myDbHelper.PUPIL_COMMENTS,
+                myDbHelper.PARENT_READING_ABILITY_RATING, myDbHelper.PARENT_COMMENTS, myDbHelper.TEACHER_READING_PROGRESS_RATING, myDbHelper.TEACHER_COMMENTS,
+                myDbHelper.PUPIL_NAME, myDbHelper.PARENT_NAME, myDbHelper.TEACHER_NAME};
+        Cursor cursor = db.query(myDbHelper.DIARY_ENTRIES_TABLE_NAME+" LEFT JOIN "+myDbHelper.USERS_TABLE_NAME+" ON "+myDbHelper.DIARY_ENTRIES_TABLE_NAME+
+                "."+myDbHelper.USER_ID+" = "+myDbHelper.USERS_TABLE_NAME+"."+myDbHelper.UID, columns, myDbHelper.UID+" = ?", whereArgs, null,null,
+                myDbHelper.READING_START_DATE_TIME,null);
+        StringBuffer buffer = new StringBuffer();
+        while (cursor.moveToNext()) {
+            int uid = cursor.getInt(cursor.getColumnIndexOrThrow(myDbHelper.UID));
+            String readingStartDateTime = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.READING_START_DATE_TIME));
+            String readingEndDateTime = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.READING_END_DATE_TIME));
+            String bookTitle = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BOOK_TITLE));
+            String bookAuthor = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BOOK_AUTHOR));
+            String pageCount = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PAGE_COUNT));
+            String startPage = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.START_PAGE));
+            String endPage = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.END_PAGE));
+            String pupilEnjoymentRating = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PUPIL_ENJOYMENT_RATING));
+            String pupilComments = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PUPIL_COMMENTS));
+            String parentReadingAbilityRating = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PARENT_READING_ABILITY_RATING));
+            String parentComments = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PARENT_COMMENTS));
+            String teacherReadingProgressRating = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TEACHER_READING_PROGRESS_RATING));
+            String teacherComments = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TEACHER_COMMENTS));
+            String pupilName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PUPIL_NAME));
+            String parentName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PARENT_NAME));
+            String teacherName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TEACHER_NAME));
+
+            buffer.append(uid+"¬"+readingStartDateTime+"¬"+readingEndDateTime+"¬"+bookTitle+"¬"+bookAuthor+"¬"+pageCount+"¬"+startPage+"¬"+endPage+"¬"+pupilEnjoymentRating+"¬"+pupilComments+"¬"+parentReadingAbilityRating+"¬"+parentComments+"¬"+teacherReadingProgressRating+"¬"+teacherComments+"¬"+pupilName+"¬"+parentName+"¬"+teacherName);
+        }
+        return buffer.toString();
+    }
+
+    public String getDiaryEntryData() {
+        SQLiteDatabase db = myHelper.getWritableDatabase();
+        String[] columns = {myDbHelper.UID, myDbHelper.READING_START_DATE_TIME, myDbHelper.READING_END_DATE_TIME, myDbHelper.BOOK_TITLE, myDbHelper.BOOK_AUTHOR,
+                myDbHelper.PAGE_COUNT, myDbHelper.START_PAGE, myDbHelper.END_PAGE, myDbHelper.PUPIL_ENJOYMENT_RATING, myDbHelper.PUPIL_COMMENTS,
+                myDbHelper.PARENT_READING_ABILITY_RATING, myDbHelper.PARENT_COMMENTS, myDbHelper.TEACHER_READING_PROGRESS_RATING, myDbHelper.TEACHER_COMMENTS,
+                myDbHelper.PUPIL_NAME, myDbHelper.PARENT_NAME, myDbHelper.TEACHER_NAME};
+        Cursor cursor = db.query(myDbHelper.DIARY_ENTRIES_TABLE_NAME+" LEFT JOIN "+myDbHelper.USERS_TABLE_NAME+" ON "+myDbHelper.DIARY_ENTRIES_TABLE_NAME+
+                        "."+myDbHelper.USER_ID+" = "+myDbHelper.USERS_TABLE_NAME+"."+myDbHelper.UID, columns, null, null, null,null,
+                myDbHelper.READING_START_DATE_TIME,null);
+        StringBuffer buffer = new StringBuffer();
+        while (cursor.moveToNext()) {
+            int uid = cursor.getInt(cursor.getColumnIndexOrThrow(myDbHelper.UID));
+            String readingStartDateTime = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.READING_START_DATE_TIME));
+            String readingEndDateTime = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.READING_END_DATE_TIME));
+            String bookTitle = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BOOK_TITLE));
+            String bookAuthor = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.BOOK_AUTHOR));
+            String pageCount = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PAGE_COUNT));
+            String startPage = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.START_PAGE));
+            String endPage = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.END_PAGE));
+            String pupilEnjoymentRating = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PUPIL_ENJOYMENT_RATING));
+            String pupilComments = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PUPIL_COMMENTS));
+            String parentReadingAbilityRating = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PARENT_READING_ABILITY_RATING));
+            String parentComments = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PARENT_COMMENTS));
+            String teacherReadingProgressRating = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TEACHER_READING_PROGRESS_RATING));
+            String teacherComments = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TEACHER_COMMENTS));
+            String pupilName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PUPIL_NAME));
+            String parentName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PARENT_NAME));
+            String teacherName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TEACHER_NAME));
+
+            buffer.append(uid+"¬"+readingStartDateTime+"¬"+readingEndDateTime+"¬"+bookTitle+"¬"+bookAuthor+"¬"+pageCount+"¬"+startPage+"¬"+endPage+"¬"+pupilEnjoymentRating+"¬"+pupilComments+"¬"+parentReadingAbilityRating+"¬"+parentComments+"¬"+teacherReadingProgressRating+"¬"+teacherComments+"¬"+pupilName+"¬"+parentName+"¬"+teacherName+"`");
+        }
+        return buffer.toString();
+    }
+
+    public int deleteDiaryEntry(String uid) {
+        SQLiteDatabase db = myHelper.getWritableDatabase();
+        String[] whereArgs = {uid};
+        int count = db.delete(myDbHelper.DIARY_ENTRIES_TABLE_NAME,myDbHelper.UID+" = ?", whereArgs);
+        return count;
+    }
+
+    public int updateDiaryEntry(String uid, String readingStartDateTime, String readingEndDateTime, String bookTitle, String bookAuthor,
+                                String pageCount, String startPage, String endPage, String pupilEnjoymentRating, String pupilComments, String parentReadingAbilityRating,
+                                String parentComments, String teacherReadingProgressRating, String teacherComments, String userId) {
+        SQLiteDatabase db = myHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(myDbHelper.READING_START_DATE_TIME, readingStartDateTime);
+        contentValues.put(myDbHelper.READING_END_DATE_TIME, readingEndDateTime);
+        contentValues.put(myDbHelper.BOOK_TITLE, bookTitle);
+        contentValues.put(myDbHelper.BOOK_AUTHOR, bookAuthor);
+        contentValues.put(myDbHelper.PAGE_COUNT, pageCount);
+        contentValues.put(myDbHelper.START_PAGE, startPage);
+        contentValues.put(myDbHelper.END_PAGE, endPage);
+        contentValues.put(myDbHelper.PUPIL_ENJOYMENT_RATING, pupilEnjoymentRating);
+        contentValues.put(myDbHelper.PUPIL_COMMENTS, pupilComments);
+        contentValues.put(myDbHelper.PARENT_READING_ABILITY_RATING, parentReadingAbilityRating);
+        contentValues.put(myDbHelper.PARENT_COMMENTS, parentComments);
+        contentValues.put(myDbHelper.TEACHER_READING_PROGRESS_RATING, teacherReadingProgressRating);
+        contentValues.put(myDbHelper.TEACHER_COMMENTS, teacherComments);
+        contentValues.put(myDbHelper.USER_ID, userId);
+        String[] whereArgs = {uid};
+        int count = db.update(myDbHelper.DIARY_ENTRIES_TABLE_NAME, contentValues, myDbHelper.UID+" = ?", whereArgs);
+        return count;
+    }
+
     static class myDbHelper extends SQLiteOpenHelper {
         private static final String DATABASE_NAME = "readingDiaryDatabase";
         private static final String DIARY_ENTRIES_TABLE_NAME = "diaryEntriesTable";
