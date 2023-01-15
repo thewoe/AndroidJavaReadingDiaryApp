@@ -19,7 +19,7 @@
         android:id="@+id/list_item_book_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/list_item_start_date_time"
         android:text=""
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -29,7 +29,7 @@
         android:id="@+id/list_item_book_author"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/list_item_book_title"
         android:text=""
         android:textColor="@color/black"
         android:textSize="14sp" />

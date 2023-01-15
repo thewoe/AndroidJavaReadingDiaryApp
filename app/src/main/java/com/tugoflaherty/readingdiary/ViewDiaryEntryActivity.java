@@ -24,6 +24,7 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
     RatingBar enjoymentRatingView, readingAbilityRatingView, readingProgressRatingView;
     myDbAdapter helper;
     String diaryEntryId, uid,readingStart,readingEnd,bookTitle,bookAuthor,pageCount,startPage,endPage,enjoymentRating,pupilComments,readingAbility,parentComments,readingProgress,teacherComments, pupilName, parentName, teacherName;
+    int readingProgressPercentage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +74,13 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
             pupilName = diaryEntryData[14];
             parentName = diaryEntryData[15];
             teacherName = diaryEntryData[16];
+            readingProgressPercentage = (Integer.valueOf(Math.round((Float.valueOf(endPage)/Float.valueOf(pageCount))*100)));
             readingStartView.setText(readingStart);
             readingEndView.setText(readingEnd);
             bookTitleView.setText(bookTitle);
             bookAuthorView.setText(bookAuthor);
-            readingProgressBar.setProgress(Integer.parseInt(endPage)/Integer.parseInt(pageCount)*100);
-            pagesReadView.setText("Read"+(Integer.parseInt(endPage)-Integer.parseInt(startPage)) +" pages from "+startPage+" to "+endPage+" out of "+pageCount);
+            readingProgressBar.setProgress(readingProgressPercentage);
+            pagesReadView.setText("Read "+(Integer.parseInt(endPage)-Integer.parseInt(startPage)) +" pages from "+startPage+" to "+endPage+" out of "+pageCount);
             enjoymentRatingView.setRating(Float.parseFloat(enjoymentRating));
             pupilCommentsView.setText(pupilComments);
             readingAbilityRatingView.setRating(Float.parseFloat(readingAbility));

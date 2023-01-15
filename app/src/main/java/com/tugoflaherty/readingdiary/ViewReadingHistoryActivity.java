@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,15 +31,21 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
         ImageButton viewReadingHistoryNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_history);
         ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_add);
         ImageButton settingsNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_settings);
+        TextView noRecords = (TextView) findViewById(R.id.view_reading_history_no_records_available);
 
-        String returnedData = helper.getDiaryEntryData();
-        String[] readingHistoryDataArray = returnedData.split("`");
-        List<String> readingHistoryData = new ArrayList<String>(Arrays.asList(readingHistoryDataArray));
-        readingHistoryList = (RecyclerView) findViewById(R.id.view_reading_history_list);
-        readingHistoryAdapter = new myHistoryAdapter(readingHistoryData);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        readingHistoryList.setLayoutManager(layoutManager);
-        readingHistoryList.setAdapter(readingHistoryAdapter);
+        if ((!helper.getDiaryEntryData().equals(null)) && (!helper.getDiaryEntryData().equals(""))) {
+            String returnedData = helper.getDiaryEntryData();
+            String[] readingHistoryDataArray = returnedData.split("`");
+            List<String> readingHistoryData = new ArrayList<String>(Arrays.asList(readingHistoryDataArray));
+            readingHistoryList = (RecyclerView) findViewById(R.id.view_reading_history_list);
+            readingHistoryAdapter = new myHistoryAdapter(readingHistoryData);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+            readingHistoryList.setLayoutManager(layoutManager);
+            readingHistoryList.setAdapter(readingHistoryAdapter);
+        }
+        else {
+            noRecords.setText("No Diary Entry Records To Display");
+        }
 
         viewDiaryEntry.setOnClickListener(new View.OnClickListener() {
             @Override

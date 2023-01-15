@@ -1,5 +1,7 @@
 package com.tugoflaherty.readingdiary;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import java.util.List;
 
 public class myHistoryAdapter extends RecyclerView.Adapter<myHistoryAdapter.ViewHolder> {
     public List<String> historyData;
+    public Context context;
 
     public myHistoryAdapter(List<String> historyData) {
         this.historyData = historyData;
@@ -45,10 +48,23 @@ public class myHistoryAdapter extends RecyclerView.Adapter<myHistoryAdapter.View
         holder.startDate.setText(startDate);
         holder.bookTitle.setText(bookTitle);
         holder.bookAuthor.setText(bookAuthor);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               context = v.getContext();
+               viewDiaryEntry(uid);
+           }
+        });
     }
 
     @Override
     public int getItemCount() {
         return historyData.size();
+    }
+
+    private void viewDiaryEntry(String uid) {
+        Intent ViewDiaryEntryScreen = new Intent(context,ViewDiaryEntryActivity.class);
+        ViewDiaryEntryScreen.putExtra("diaryEntryId",uid);
+        context.startActivity(ViewDiaryEntryScreen);
     }
 }

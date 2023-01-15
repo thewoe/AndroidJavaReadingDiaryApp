@@ -32,6 +32,18 @@
         app:layout_constraintTop_toBottomOf="@+id/view_reading_history_title"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <TextView
+        android:id="@+id/view_reading_history_no_records_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_reading_history_search" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/view_reading_history_list"
         android:layout_width="match_parent"
