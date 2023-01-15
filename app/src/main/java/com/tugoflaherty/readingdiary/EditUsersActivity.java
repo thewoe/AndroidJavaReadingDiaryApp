@@ -13,17 +13,21 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 
 public class EditUsersActivity extends AppCompatActivity {
-    EditText pupilNameInputField = (EditText) findViewById(R.id.edit_users_pupils_input);
-    EditText parentNameInputField = (EditText) findViewById(R.id.edit_users_parents_input);
-    EditText teacherNameInputField = (EditText) findViewById(R.id.edit_users_teachers_input);
-    myDbAdapter helper = new myDbAdapter(this);
-    String uid = "0";
+    EditText pupilNameInputField;
+    EditText parentNameInputField;
+    EditText teacherNameInputField;
+    myDbAdapter helper;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_users);
+        helper = new myDbAdapter(this);
 
+        pupilNameInputField = (EditText) findViewById(R.id.edit_users_pupils_input);
+        parentNameInputField = (EditText) findViewById(R.id.edit_users_parents_input);
+        teacherNameInputField = (EditText) findViewById(R.id.edit_users_teachers_input);
         Button cancel = (Button) findViewById(R.id.edit_users_button_cancel);
         Button save = (Button) findViewById(R.id.edit_users_button_save);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.edit_users_navigation_button_home);
@@ -31,7 +35,7 @@ public class EditUsersActivity extends AppCompatActivity {
         ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.edit_users_navigation_button_add);
         ImageButton settingsNav = (ImageButton) findViewById(R.id.edit_users_navigation_button_settings);
 
-        if ((helper.getUserData().equals(null)) || (helper.getUserData().equals(""))) {
+        if ((!helper.getUserData().equals(null)) && (!helper.getUserData().equals(""))) {
             String returnedData = helper.getUserData();
             String[] userData = returnedData.split(",");
             uid = userData[0];
@@ -108,7 +112,7 @@ public class EditUsersActivity extends AppCompatActivity {
             fieldsCompleted = false;
         }
         if (fieldsCompleted == true) {
-            if (uid.equals("0")) {
+            if (uid == null) {
                 long id = helper.insertUserData(pupilName, parentName, teacherName);
                 if (id <= 0) {
                     Message.message(getApplicationContext(), "Save Unsuccessful - Please Try Again");

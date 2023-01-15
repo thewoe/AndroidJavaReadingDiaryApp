@@ -163,7 +163,7 @@
         android:layout_marginLeft="20dp"
         android:ems="10"
         android:hint="Enter teacher's name..."
-        android:inputType="datetime"
+        android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
         app:layout_constraintStart_toStartOf="parent"
