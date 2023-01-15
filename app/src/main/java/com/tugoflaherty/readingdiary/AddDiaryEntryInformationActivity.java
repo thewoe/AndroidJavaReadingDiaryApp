@@ -57,26 +57,26 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                 String pageCountString = pageCountInputField.getText().toString();
                 String startPageString = startPageInputField.getText().toString();
                 String endPageString = endPageInputField.getText().toString();
-                Integer pageCount = 0, startPage = 0, endPage = 0;
+                int pageCount = 0, startPage = 0, endPage = 0;
                 if ((readingStart.equals(null)) || (readingStart.equals(""))) {
                     readingStartInputField.setHintTextColor(getResources().getColor(R.color.red));
-                    Log.i("reading start date","Rejected");
+                    Message.message(getApplicationContext(),"Enter Reading Start Date/Time");
                     fieldsCompleted = false;
                 }
                 if ((readingEnd.equals(null)) || (readingEnd.equals(""))) {
                     readingEndInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    Message.message(getApplicationContext(),"Enter Reading End Date/Time");
                     fieldsCompleted = false;
-                    Log.i("reading end date","Rejected");
                 }
                 if ((bookTitle.equals(null)) || (bookTitle.equals(""))) {
                     bookTitleInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    Message.message(getApplicationContext(),"Enter Book Title");
                     fieldsCompleted = false;
-                    Log.i("book title","Rejected");
                 }
                 if ((bookAuthor.equals(null)) || (bookAuthor.equals(""))) {
                     bookAuthorInputField.setHintTextColor(getResources().getColor(R.color.red));
+                    Message.message(getApplicationContext(),"Enter Book Author");
                     fieldsCompleted = false;
-                    Log.i("author","Rejected");
                 }
                 if ((!pageCountString.equals(null)) && (!pageCountString.equals(""))) {
                     try {
@@ -84,15 +84,15 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                         if (pageCount < 1) {
                             endPageInputField.setTextColor(getResources().getColor(R.color.red));
                             pageCountInputField.setHintTextColor(getResources().getColor(R.color.red));
+                            Message.message(getApplicationContext(),"Page Count Must Be Greater Than 1");
                             fieldsCompleted = false;
-                            Log.i("page count less than 1","Rejected");
                         }
                     }
                     catch (Exception e) {
                         endPageInputField.setTextColor(getResources().getColor(R.color.red));
                         pageCountInputField.setHintTextColor(getResources().getColor(R.color.red));
+                        Message.message(getApplicationContext(),"Page Count Must Be A Number");
                         fieldsCompleted = false;
-                        Log.i("page count parse error","Rejected");
                     }
                 }
                 if ((!startPageString.equals(null)) && (!startPageString.equals(""))) {
@@ -108,8 +108,8 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                     catch (Exception e) {
                         endPageInputField.setTextColor(getResources().getColor(R.color.red));
                         startPageInputField.setHintTextColor(getResources().getColor(R.color.red));
+                        Message.message(getApplicationContext(),"Start Page Must Be Greater Than 1 And Less Than Page Count");
                         fieldsCompleted = false;
-                        Log.i("start page parse error","Rejected");
                     }
                 }
                 if ((!endPageString.equals(null)) && (!endPageString.equals(""))) {
@@ -118,24 +118,31 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                         if ((endPage < 1) || (endPage > pageCount) || (endPage < startPage)) {
                             endPageInputField.setTextColor(getResources().getColor(R.color.red));
                             endPageInputField.setHintTextColor(getResources().getColor(R.color.red));
+                            Message.message(getApplicationContext(),"End Page Must Be Greater Than 1, Less Than Page Count And Greater Than Start Page");
                             fieldsCompleted = false;
-                            Log.i("Endpage issue","Rejected");
                         }
                     }
                     catch (Exception e) {
                         endPageInputField.setTextColor(getResources().getColor(R.color.red));
                         endPageInputField.setHintTextColor(getResources().getColor(R.color.red));
+                        Message.message(getApplicationContext(),"End Page Must Be A Number");
                         fieldsCompleted = false;
-                        Log.i("Endpage parse error","Rejected");
                     }
                 }
                 if (fieldsCompleted == true) {
                     Log.i("NEXT - ACCEPTED","Reading Start Time: "+readingStart+" Reading End Time: "+readingEnd+" Book Title: "+bookTitle+" Book Author: "+bookAuthor+" Page Count: "+pageCount+" Start Page: "+startPage+" End Page: "+endPage);
                     Intent AddDiaryEntryPupilCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryPupilCommentsActivity.class);
+                    AddDiaryEntryPupilCommentsScreen.putExtra("readingStart", readingStart);
+                    AddDiaryEntryPupilCommentsScreen.putExtra("readingEnd", readingEnd);
+                    AddDiaryEntryPupilCommentsScreen.putExtra("bookTitle", bookTitle);
+                    AddDiaryEntryPupilCommentsScreen.putExtra("bookAuthor", bookAuthor);
+                    AddDiaryEntryPupilCommentsScreen.putExtra("pageCount",pageCount);
+                    AddDiaryEntryPupilCommentsScreen.putExtra("startPage", startPage);
+                    AddDiaryEntryPupilCommentsScreen.putExtra("endPage", endPage);
                     startActivity(AddDiaryEntryPupilCommentsScreen);
                 }
                 else {
-                    Log.i("NEXT - REJECTED", "Rejected: "+fieldsCompleted);
+                    Message.message(getApplicationContext(),"Ensure All Fields Are Completed Correctly");
                 }
             }
         });

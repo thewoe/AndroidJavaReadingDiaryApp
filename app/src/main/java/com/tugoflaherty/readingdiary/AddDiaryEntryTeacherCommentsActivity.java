@@ -12,11 +12,24 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 
 public class AddDiaryEntryTeacherCommentsActivity extends AppCompatActivity {
+    myDbAdapter helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diary_entry_teacher_comments);
+        helper = new myDbAdapter(this);
+        String readingStart = getIntent().getStringExtra("readingStart");
+        String readingEnd = getIntent().getStringExtra("readingEnd");
+        String bookTitle = getIntent().getStringExtra("bookTitle");
+        String bookAuthor = getIntent().getStringExtra("bookAuthor");
+        String pageCount = String.valueOf(getIntent().getIntExtra("pageCount",0));
+        String startPage = String.valueOf(getIntent().getIntExtra("startPage",0));
+        String endPage = String.valueOf(getIntent().getIntExtra("endPage",0));
+        String enjoymentRating = String.valueOf(getIntent().getFloatExtra("enjoymentRating", 0.0F));
+        String pupilComments = getIntent().getStringExtra("pupilComments");
+        String readingAbilityRating = String.valueOf(getIntent().getFloatExtra("readingAbilityRating", 0.0F));
+        String parentComments = getIntent().getStringExtra("parentComments");
 
         RatingBar readingProgressInputField = (RatingBar) findViewById(R.id.new_diary_entry_teacher_comments_reading_progress_rating_bar);
         EditText teacherCommentsInputField = (EditText) findViewById(R.id.new_teacher_comments_input);
@@ -41,19 +54,29 @@ public class AddDiaryEntryTeacherCommentsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean fieldsCompleted = true;
-                Float readingProgressRating = 0.0F;
+                float readingProgressRating = 0.0F;
                 String teacherComments = "";
                 readingProgressRating = readingProgressInputField.getRating();
                 teacherComments = teacherCommentsInputField.getText().toString();
                 if ((teacherComments.equals(null)) || (teacherComments.equals(""))) {
                     teacherCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
-                    Log.i("reading start date","Rejected");
+                    Message.message(getApplicationContext(), "Teacher Comments Must Be Completed");
                     fieldsCompleted = false;
                 }
                 if (fieldsCompleted == true) {
                     Log.i("NEXT - ACCEPTED","Reading Progress Rating: "+readingProgressRating+" Teacher Comments: "+teacherComments);
-                    Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
-                    startActivity(ViewReadingHistoryScreen);
+                    String readingProgressString = String.valueOf(readingProgressRating);
+                    long id = helper.insertDiaryEntryData(readingStart, readingEnd, bookTitle, bookAuthor, pageCount, startPage, endPage, enjoymentRating, pupilComments, readingAbilityRating, parentComments, readingProgressString, teacherComments,"1");
+                    if (id <= 0) {
+                        Message.message(getApplicationContext(), "Save Unsuccessful - Please Try Again");
+                    } else {
+                        Message.message(getApplicationContext(), "Save Successful");
+                        Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
+                        startActivity(ViewReadingHistoryScreen);
+                    }
+                }
+                else {
+                    Message.message(getApplicationContext(),"Ensure All Fields Are Completed Correctly");
                 }
             }
         });

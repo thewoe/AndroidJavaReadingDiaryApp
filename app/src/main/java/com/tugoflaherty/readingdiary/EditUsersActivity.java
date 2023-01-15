@@ -134,5 +134,8 @@ public class EditUsersActivity extends AppCompatActivity {
                 }
             }
         }
+        else {
+            Message.message(getApplicationContext(),"Ensure All Fields Are Completed Correctly");
+        }
     }
 }

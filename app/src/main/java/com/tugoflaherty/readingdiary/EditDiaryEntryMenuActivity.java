@@ -14,8 +14,7 @@ public class EditDiaryEntryMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary_entry_menu);
-        int diaryEntryId = getIntent().getIntExtra("diaryEntryId",-1);
-
+        String diaryEntryId = getIntent().getStringExtra("diaryEntryId");
 
         Button editDiaryEntryInformation = (Button) findViewById(R.id.edit_diary_entry_menu_button_information);
         Button editDiaryEntryPupilComments = (Button) findViewById(R.id.edit_diary_entry_menu_button_pupil_comments);
