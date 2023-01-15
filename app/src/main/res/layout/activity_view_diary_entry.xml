@@ -8,23 +8,25 @@
     tools:context=".ViewDiaryEntryActivity"
     android:background="@drawable/background_image">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:contentDescription="@string/view_diary_entry_screen_name"
-        android:fillViewport="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:contentDescription="@string/view_diary_entry_screen_name"-->
+<!--        android:fillViewport="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fillViewport="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/view_diary_entry_navigation_buttons">
 
-
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginBottom="250dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:contentDescription="@string/view_diary_entry_screen_name"
@@ -407,93 +409,38 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view_diary_entry_teacher_comments_additional_comments_title" />
 
+                <Button
+                    android:id="@+id/view_diary_entry_button_edit"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="@string/view_diary_entry_button_edit"
+                    app:backgroundTint="@color/blue"
+                    app:layout_constraintTop_toBottomOf="@+id/view_diary_entry_teacher_comments_additional_comments"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.234"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="TextContrastCheck" />
+
+                <Button
+                    android:id="@+id/view_diary_entry_button_delete"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="@string/view_diary_entry_button_delete"
+                    app:backgroundTint="@color/blue"
+                    app:layout_constraintTop_toBottomOf="@+id/view_diary_entry_teacher_comments_additional_comments"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.244"
+                    app:layout_constraintStart_toEndOf="@+id/view_diary_entry_button_edit" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
             </ScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/view_diary_entry_navigation_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:contentDescription="@string/view_diary_entry_screen_name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/view_diary_entry_button_edit"
-            android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="80dp"
-            android:text="@string/view_diary_entry_button_edit"
-            app:backgroundTint="@color/blue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.234"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TextContrastCheck" />
 
-            <Button
-                android:id="@+id/view_diary_entry_button_delete"
-                android:layout_width="125dp"
-                android:layout_height="50dp"
-                android:layout_marginBottom="80dp"
-                android:text="@string/view_diary_entry_button_delete"
-                app:backgroundTint="@color/blue"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.244"
-                app:layout_constraintStart_toEndOf="@+id/view_diary_entry_button_edit" />
 
-            <ImageButton
-                android:id="@+id/view_diary_entry_navigation_button_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginBottom="0dp"
-                android:contentDescription="@string/home_screen_name"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/home_icon" />
 
-            <ImageButton
-                android:id="@+id/view_diary_entry_navigation_button_history"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginBottom="0dp"
-                android:contentDescription="@string/home_view_reading_history"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/view_diary_entry_navigation_button_home"
-                app:srcCompat="@drawable/list_icon"
-                app:tint="@color/blue" />
-
-            <ImageButton
-                android:id="@+id/view_diary_entry_navigation_button_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginBottom="0dp"
-                android:contentDescription="@string/new_diary_entry_information_screen_name"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/view_diary_entry_navigation_button_history"
-                app:srcCompat="@drawable/add_icon" />
-
-            <ImageButton
-                android:id="@+id/view_diary_entry_navigation_button_settings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginBottom="0dp"
-                android:contentDescription="@string/settings_screen_name"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/view_diary_entry_navigation_button_add"
-                app:srcCompat="@drawable/settings_icon" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

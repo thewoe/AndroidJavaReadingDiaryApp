@@ -49,10 +49,10 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
         ImageButton sendEmail = (ImageButton) findViewById(R.id.view_diary_entry_button_email_diary);
         Button edit = (Button) findViewById(R.id.view_diary_entry_button_edit);
         Button delete = (Button) findViewById(R.id.view_diary_entry_button_delete);
-        ImageButton homepageNav = (ImageButton) findViewById(R.id.view_diary_entry_navigation_button_home);
-        ImageButton viewReadingHistoryNav = (ImageButton) findViewById(R.id.view_diary_entry_navigation_button_history);
-        ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.view_diary_entry_navigation_button_add);
-        ImageButton settingsNav = (ImageButton) findViewById(R.id.view_diary_entry_navigation_button_settings);
+//        ImageButton homepageNav = (ImageButton) findViewById(R.id.view_diary_entry_navigation_button_home);
+//        ImageButton viewReadingHistoryNav = (ImageButton) findViewById(R.id.view_diary_entry_navigation_button_history);
+//        ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.view_diary_entry_navigation_button_add);
+//        ImageButton settingsNav = (ImageButton) findViewById(R.id.view_diary_entry_navigation_button_settings);
 
         if ((!helper.getDiaryEntryDataById(diaryEntryId).equals(null)) && (!helper.getDiaryEntryDataById(diaryEntryId).equals(""))) {
             String returnedData = helper.getDiaryEntryDataById(diaryEntryId);
@@ -148,40 +148,40 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
             }
         });
 
-        homepageNav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(HomeScreen);
-                finish();
-            }
-        });
-
-        viewReadingHistoryNav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
-                startActivity(ViewReadingHistoryScreen);
-            }
-        });
-
-        addDiaryEntryNav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent AddDiaryEntryScreen = new Intent(getApplicationContext(), AddDiaryEntryInformationActivity.class);
-                startActivity(AddDiaryEntryScreen);
-                finish();
-            }
-        });
-
-        settingsNav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent SettingsScreen = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(SettingsScreen);
-                finish();
-            }
-        });
+//        homepageNav.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(HomeScreen);
+//                finish();
+//            }
+//        });
+//
+//        viewReadingHistoryNav.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
+//                startActivity(ViewReadingHistoryScreen);
+//            }
+//        });
+//
+//        addDiaryEntryNav.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent AddDiaryEntryScreen = new Intent(getApplicationContext(), AddDiaryEntryInformationActivity.class);
+//                startActivity(AddDiaryEntryScreen);
+//                finish();
+//            }
+//        });
+//
+//        settingsNav.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent SettingsScreen = new Intent(getApplicationContext(), SettingsActivity.class);
+//                startActivity(SettingsScreen);
+//                finish();
+//            }
+//        });
     }
     public void deleteDiaryEntry(View view) {
         int count = helper.deleteDiaryEntry(diaryEntryId);

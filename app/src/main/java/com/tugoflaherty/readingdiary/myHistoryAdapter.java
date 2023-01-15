@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +20,10 @@ public class myHistoryAdapter extends RecyclerView.Adapter<myHistoryAdapter.View
     public Context context;
 
     public myHistoryAdapter(List<String> historyData) {
+        this.historyData = historyData;
+    }
+
+    public void setDataSet(List<String> historyData){
         this.historyData = historyData;
     }
 

@@ -9,11 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class ViewReadingHistoryActivity extends AppCompatActivity {
     RecyclerView readingHistoryList;
@@ -26,6 +28,7 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_reading_history);
         helper = new myDbAdapter(this);
 
+        SearchView diaryEntriesSearch = (SearchView) findViewById(R.id.view_reading_history_search);
         Button viewDiaryEntry = (Button) findViewById(R.id.view_reading_history_button_view_entry);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_home);
         ImageButton viewReadingHistoryNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_history);
@@ -42,6 +45,26 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
             readingHistoryList.setLayoutManager(layoutManager);
             readingHistoryList.setAdapter(readingHistoryAdapter);
+            diaryEntriesSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String searchField) {
+
+                    List<String> filteredReadingHistoryData = new ArrayList<String>();
+                    for (String diaryEntry : readingHistoryData ) {
+                        if (diaryEntry.toLowerCase().contains(searchField.trim().toLowerCase())) {
+                            filteredReadingHistoryData.add(diaryEntry);
+                        }
+                    }
+                    readingHistoryAdapter.setDataSet(filteredReadingHistoryData);
+                    readingHistoryAdapter.notifyDataSetChanged();
+                    return true;
+                }
+            });
         }
         else {
             noRecords.setText("No Diary Entry Records To Display");
