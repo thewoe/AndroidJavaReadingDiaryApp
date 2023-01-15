@@ -1,6 +1,8 @@
 package com.tugoflaherty.readingdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,18 +10,35 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ViewReadingHistoryActivity extends AppCompatActivity {
+    RecyclerView readingHistoryList;
+    myDbAdapter helper;
+    myHistoryAdapter readingHistoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reading_history);
+        helper = new myDbAdapter(this);
 
         Button viewDiaryEntry = (Button) findViewById(R.id.view_reading_history_button_view_entry);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_home);
         ImageButton viewReadingHistoryNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_history);
         ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_add);
         ImageButton settingsNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_settings);
+
+        String returnedData = helper.getDiaryEntryData();
+        String[] readingHistoryDataArray = returnedData.split("`");
+        List<String> readingHistoryData = new ArrayList<String>(Arrays.asList(readingHistoryDataArray));
+        readingHistoryList = (RecyclerView) findViewById(R.id.view_reading_history_list);
+        readingHistoryAdapter = new myHistoryAdapter(readingHistoryData);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        readingHistoryList.setLayoutManager(layoutManager);
+        readingHistoryList.setAdapter(readingHistoryAdapter);
 
         viewDiaryEntry.setOnClickListener(new View.OnClickListener() {
             @Override
