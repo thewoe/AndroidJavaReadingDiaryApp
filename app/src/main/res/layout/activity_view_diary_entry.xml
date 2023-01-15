@@ -187,6 +187,7 @@
                         android:layout_height="25dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginLeft="20dp"
+                        android:max="100"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view_diary_entry_information_page_information_title" />
 
