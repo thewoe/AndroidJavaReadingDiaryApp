@@ -2,25 +2,64 @@ package com.tugoflaherty.readingdiary;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class myDbAdapter {
+
     myDbHelper myHelper;
+
     public myDbAdapter(Context context) {
         myHelper = new myDbHelper(context);
     }
+
     public long insertUserData(String pupilName, String parentName, String teacherName) {
-        SQLiteDatabase dbb = myHelper.getWritableDatabase();
+        SQLiteDatabase db = myHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(myDbHelper.PUPIL_NAME, pupilName);
         contentValues.put(myDbHelper.PARENT_NAME, parentName);
         contentValues.put(myDbHelper.TEACHER_NAME, teacherName);
-        long id = dbb.insert(myDbHelper.USERS_TABLE_NAME, null, contentValues);
+        long id = db.insert(myDbHelper.USERS_TABLE_NAME, null, contentValues);
         return id;
     }
+
+    public String getUserData() {
+        SQLiteDatabase db = myHelper.getWritableDatabase();
+        String[] columns = {myDbHelper.UID, myDbHelper.PUPIL_NAME, myDbHelper.PARENT_NAME, myDbHelper.TEACHER_NAME};
+        Cursor cursor = db.query(myDbHelper.USERS_TABLE_NAME, columns, null, null, null,null,null,null);
+        StringBuffer buffer = new StringBuffer();
+        while (cursor.moveToNext()) {
+            int uid = cursor.getInt(cursor.getColumnIndexOrThrow(myDbHelper.UID));
+            String pupilName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PUPIL_NAME));
+            String parentName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.PARENT_NAME));
+            String teacherName = cursor.getString(cursor.getColumnIndexOrThrow(myDbHelper.TEACHER_NAME));
+            buffer.append(uid+","+pupilName+","+parentName+","+teacherName);
+        }
+        return buffer.toString();
+    }
+
+    public int deleteUser(String uid) {
+        SQLiteDatabase db = myHelper.getWritableDatabase();
+        String[] whereArgs = {uid};
+        int count = db.delete(myDbHelper.USERS_TABLE_NAME,myDbHelper.UID+" = ?", whereArgs);
+        return count;
+    }
+
+    public int updateUser(String uid, String pupilName, String parentName, String teacherName) {
+        SQLiteDatabase db = myHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(myDbHelper.PUPIL_NAME, pupilName);
+        contentValues.put(myDbHelper.PARENT_NAME, parentName);
+        contentValues.put(myDbHelper.TEACHER_NAME, teacherName);
+        String[] whereArgs = {uid};
+        int count = db.update(myDbHelper.USERS_TABLE_NAME, contentValues, myDbHelper.UID+" = ?", whereArgs);
+        return count;
+    }
     public long insertDiaryEntryData(String readingStartDateTime, String readingEndDateTime, String bookTitle, String bookAuthor, String pageCount, String startPage, String endPage, String pupilEnjoymentRating, String pupilComments, String parentReadingAbilityRating, String parentComments, String teacherReadingProgressRating, String teacherComments, String userId) {
-        SQLiteDatabase dbb = myHelper.getWritableDatabase();
+        SQLiteDatabase db = myHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(myDbHelper.READING_START_DATE_TIME, readingStartDateTime);
         contentValues.put(myDbHelper.READING_END_DATE_TIME, readingEndDateTime);
@@ -36,7 +75,7 @@ public class myDbAdapter {
         contentValues.put(myDbHelper.TEACHER_READING_PROGRESS_RATING, teacherReadingProgressRating);
         contentValues.put(myDbHelper.TEACHER_COMMENTS, teacherComments);
         contentValues.put(myDbHelper.USER_ID, userId);
-        long id = dbb.insert(myDbHelper.USERS_TABLE_NAME, null, contentValues);
+        long id = db.insert(myDbHelper.USERS_TABLE_NAME, null, contentValues);
         return id;
     }
     static class myDbHelper extends SQLiteOpenHelper {

@@ -10,23 +10,35 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 public class EditUsersActivity extends AppCompatActivity {
+    EditText pupilNameInputField = (EditText) findViewById(R.id.edit_users_pupils_input);
+    EditText parentNameInputField = (EditText) findViewById(R.id.edit_users_parents_input);
+    EditText teacherNameInputField = (EditText) findViewById(R.id.edit_users_teachers_input);
+    myDbAdapter helper = new myDbAdapter(this);
+    String uid = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_users);
 
-        EditText pupilNameInputField = (EditText) findViewById(R.id.edit_users_pupils_input);
-        EditText parentNameInputField = (EditText) findViewById(R.id.edit_users_parents_input);
-        EditText teacherNameInputField = (EditText) findViewById(R.id.edit_users_teachers_input);
         Button cancel = (Button) findViewById(R.id.edit_users_button_cancel);
         Button save = (Button) findViewById(R.id.edit_users_button_save);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.edit_users_navigation_button_home);
         ImageButton viewReadingHistoryNav = (ImageButton) findViewById(R.id.edit_users_navigation_button_history);
         ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.edit_users_navigation_button_add);
         ImageButton settingsNav = (ImageButton) findViewById(R.id.edit_users_navigation_button_settings);
-        myDbAdapter helper = new myDbAdapter(this);
+
+        if ((helper.getUserData().equals(null)) || (helper.getUserData().equals(""))) {
+            String returnedData = helper.getUserData();
+            String[] userData = returnedData.split(",");
+            uid = userData[0];
+            pupilNameInputField.setText(userData[1]);
+            parentNameInputField.setText(userData[2]);
+            teacherNameInputField.setText(userData[3]);
+        }
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,32 +51,7 @@ public class EditUsersActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean fieldsCompleted = true;
-                String pupilName = "";
-                String parentName = "";
-                String teacherName = "";
-                pupilName = pupilNameInputField.getText().toString();
-                parentName = parentNameInputField.getText().toString();
-                teacherName = teacherNameInputField.getText().toString();
-                if ((pupilName.equals(null)) || (pupilName.equals(""))) {
-                    pupilNameInputField.setHintTextColor(getResources().getColor(R.color.red));
-                    Log.i("reading start date","Rejected");
-                    fieldsCompleted = false;
-                }
-                if ((parentName.equals(null)) || (parentName.equals(""))) {
-                    parentNameInputField.setHintTextColor(getResources().getColor(R.color.red));
-                    Log.i("reading start date","Rejected");
-                    fieldsCompleted = false;
-                }
-                if ((teacherName.equals(null)) || (teacherName.equals(""))) {
-                    teacherNameInputField.setHintTextColor(getResources().getColor(R.color.red));
-                    Log.i("reading start date","Rejected");
-                    fieldsCompleted = false;
-                }
-                if (fieldsCompleted == true) {
-                    Intent SettingsScreen = new Intent(getApplicationContext(), SettingsActivity.class);
-                    startActivity(SettingsScreen);
-                }
+                addUser(v);
             }
         });
 
@@ -101,6 +88,47 @@ public class EditUsersActivity extends AppCompatActivity {
         });
     }
     public void addUser(View view) {
-
+        boolean fieldsCompleted = true;
+        String pupilName = pupilNameInputField.getText().toString();
+        String parentName = parentNameInputField.getText().toString();
+        String teacherName = teacherNameInputField.getText().toString();
+        if ((pupilName.equals(null)) || (pupilName.equals(""))) {
+            pupilNameInputField.setHintTextColor(getResources().getColor(R.color.red));
+            Message.message(getApplicationContext(),"Enter Pupil Name");
+            fieldsCompleted = false;
+        }
+        if ((parentName.equals(null)) || (parentName.equals(""))) {
+            parentNameInputField.setHintTextColor(getResources().getColor(R.color.red));
+            Message.message(getApplicationContext(),"Enter Parent Name");
+            fieldsCompleted = false;
+        }
+        if ((teacherName.equals(null)) || (teacherName.equals(""))) {
+            teacherNameInputField.setHintTextColor(getResources().getColor(R.color.red));
+            Message.message(getApplicationContext(),"Enter Teacher Name");
+            fieldsCompleted = false;
+        }
+        if (fieldsCompleted == true) {
+            if (uid.equals("0")) {
+                long id = helper.insertUserData(pupilName, parentName, teacherName);
+                if (id <= 0) {
+                    Message.message(getApplicationContext(), "Save Unsuccessful - Please Try Again");
+                } else {
+                    Message.message(getApplicationContext(), "Save Successful");
+                    Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(HomeScreen);
+                }
+            }
+            else {
+                int count = helper.updateUser("1",pupilName,parentName,teacherName);
+                if (count <= 0) {
+                    Message.message(getApplicationContext(), "Save Unsuccessful - Please Try Again");
+                }
+                else {
+                    Message.message(getApplicationContext(), "Save Successful");
+                    Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(HomeScreen);
+                }
+            }
+        }
     }
 }
