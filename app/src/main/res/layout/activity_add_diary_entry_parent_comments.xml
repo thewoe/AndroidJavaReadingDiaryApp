@@ -131,22 +131,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_diary_entry_parent_comments_additional_comments_help" />
 
-    <EditText
-        android:id="@+id/new_parent_comments_input"
-        android:layout_width="370dp"
-        android:layout_height="400dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/new_diary_entry_parent_comments_additional_comments_hint"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_diary_entry_parent_comments_additional_comments_guide" />
+        <EditText
+            android:id="@+id/new_parent_comments_input"
+            android:layout_width="370dp"
+            android:layout_height="400dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/new_diary_entry_parent_comments_additional_comments_hint"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_diary_entry_parent_comments_additional_comments_guide" />
 
     <Button
         android:id="@+id/new_diary_entry_parent_comments_button_cancel"
