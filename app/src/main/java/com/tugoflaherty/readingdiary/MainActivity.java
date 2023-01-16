@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            finish();
                             System.exit(0);
                         }
                     });
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
                 startActivity(ViewReadingHistoryScreen);
-                finish();
             }
         });
 
@@ -63,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent AddNewDiaryEntryScreen = new Intent(getApplicationContext(), AddDiaryEntryInformationActivity.class);
                 startActivity(AddNewDiaryEntryScreen);
-                finish();
             }
         });
 
@@ -72,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent ManageUsersScreen = new Intent(getApplicationContext(), EditUsersActivity.class);
                 startActivity(ManageUsersScreen);
-                finish();
             }
         });
 
@@ -81,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(HomeScreen);
-                finish();
             }
         });
 
@@ -90,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
                 startActivity(ViewReadingHistoryScreen);
-                finish();
             }
         });
 
@@ -99,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent AddDiaryEntryScreen = new Intent(getApplicationContext(), AddDiaryEntryInformationActivity.class);
                 startActivity(AddDiaryEntryScreen);
-                finish();
             }
         });
 
@@ -108,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent SettingsScreen = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(SettingsScreen);
-                finish();
             }
         });
     }

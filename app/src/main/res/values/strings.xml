@@ -53,9 +53,9 @@
     <string name="new_diary_entry_information_screen_name">Add New Diary Entry</string>
     <string name="new_diary_entry_information_reading_information_title">Reading Information</string>
     <string name="new_diary_entry_information_reading_information_start_date_time_title">Reading Start Date and Time</string>
-    <string name="new_diary_entry_information_reading_information_start_date_time_help">Please select the date and time you started reading</string>
+    <string name="new_diary_entry_information_reading_information_start_date_time_help">Please enter the date and time you started reading.\nEnter in format: DD/MM/YYYY HH:MM.\n\nHint: tap /: button for / and hold button for :</string>
     <string name="new_diary_entry_information_reading_information_end_date_time_title">Reading End Date and Time</string>
-    <string name="new_diary_entry_information_reading_information_end_date_time_help">Please select the date and time you finished reading</string>
+    <string name="new_diary_entry_information_reading_information_end_date_time_help">Please select the date and time you finished reading.\nEnter in format: DD/MM/YYYY HH:MM.\n\nHint: tap /: button for / and hold button for :</string>
     <string name="new_diary_entry_information_reading_information_time_spent_reading_information">Wow! You read for </string>
     <string name="new_diary_entry_information_reading_information_time_spent_reading_hours"> hours and </string>
     <string name="new_diary_entry_information_reading_information_time_spent_reading_minutes"> minutes. Well done!</string>

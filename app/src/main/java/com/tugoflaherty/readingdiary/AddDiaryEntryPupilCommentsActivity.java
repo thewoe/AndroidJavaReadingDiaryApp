@@ -41,7 +41,6 @@ public class AddDiaryEntryPupilCommentsActivity extends AppCompatActivity {
                 pupilCommentsInputField.setText("");
                 Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(HomeScreen);
-                finish();
             }
         });
 
@@ -83,7 +82,6 @@ public class AddDiaryEntryPupilCommentsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(HomeScreen);
-                finish();
             }
         });
 
@@ -92,7 +90,6 @@ public class AddDiaryEntryPupilCommentsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
                 startActivity(ViewReadingHistoryScreen);
-                finish();
             }
         });
 
@@ -109,7 +106,6 @@ public class AddDiaryEntryPupilCommentsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent SettingsScreen = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(SettingsScreen);
-                finish();
             }
         });
     }

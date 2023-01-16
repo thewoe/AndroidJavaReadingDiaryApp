@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,6 +30,7 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_reading_history);
         helper = new myDbAdapter(this);
 
+        TextView searchTitle = (TextView) findViewById(R.id.view_reading_history_title);
         SearchView diaryEntriesSearch = (SearchView) findViewById(R.id.view_reading_history_search);
         Button viewDiaryEntry = (Button) findViewById(R.id.view_reading_history_button_view_entry);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_home);
@@ -36,7 +39,8 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
         ImageButton settingsNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_settings);
         TextView noRecords = (TextView) findViewById(R.id.view_reading_history_no_records_available);
 
-        if ((!helper.getDiaryEntryData().equals(null)) && (!helper.getDiaryEntryData().equals(""))) {
+        noRecords.setText("");
+        searchTitle.setText("Click the Search icon to search records");
             String returnedData = helper.getDiaryEntryData();
             String[] readingHistoryDataArray = returnedData.split("`");
             List<String> readingHistoryData = new ArrayList<String>(Arrays.asList(readingHistoryDataArray));
@@ -65,9 +69,11 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
                     return true;
                 }
             });
-        }
-        else {
-            noRecords.setText("No Diary Entry Records To Display");
+        if (helper.getDiaryEntryData().equals(null) || helper.getDiaryEntryData().equals("")) {
+            noRecords.setText("Add a new diary entry to view your reading history here");
+            searchTitle.setText("No Diary Entry Records To Display");
+            readingHistoryList.setVisibility(View.GONE);
+            diaryEntriesSearch.setVisibility(View.GONE);
         }
 
         viewDiaryEntry.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +82,6 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
                 Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
                 ViewDiaryEntryScreen.putExtra("diaryEntryId",1); //hardcoded temporarily - must be dynamic from db from clicked list item
                 startActivity(ViewDiaryEntryScreen);
-                finish();
             }
         });
 
@@ -85,7 +90,6 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(HomeScreen);
-                finish();
             }
         });
 
@@ -102,7 +106,6 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent AddDiaryEntryScreen = new Intent(getApplicationContext(), AddDiaryEntryInformationActivity.class);
                 startActivity(AddDiaryEntryScreen);
-                finish();
             }
         });
 
@@ -111,7 +114,6 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent SettingsScreen = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(SettingsScreen);
-                finish();
             }
         });
     }

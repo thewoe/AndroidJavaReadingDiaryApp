@@ -26,7 +26,6 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent ManageUsersScreen = new Intent(getApplicationContext(), EditUsersActivity.class);
                 startActivity(ManageUsersScreen);
-                finish();
             }
         });
 
@@ -35,7 +34,6 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(HomeScreen);
-                finish();
             }
         });
 
@@ -44,7 +42,6 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent ViewReadingHistoryScreen = new Intent(getApplicationContext(), ViewReadingHistoryActivity.class);
                 startActivity(ViewReadingHistoryScreen);
-                finish();
             }
         });
 
@@ -53,7 +50,6 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent AddDiaryEntryScreen = new Intent(getApplicationContext(), AddDiaryEntryInformationActivity.class);
                 startActivity(AddDiaryEntryScreen);
-                finish();
             }
         });
 

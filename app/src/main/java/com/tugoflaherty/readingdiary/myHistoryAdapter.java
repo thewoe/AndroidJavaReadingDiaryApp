@@ -55,11 +55,11 @@ public class myHistoryAdapter extends RecyclerView.Adapter<myHistoryAdapter.View
         holder.bookTitle.setText(bookTitle);
         holder.bookAuthor.setText(bookAuthor);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               context = v.getContext();
-               viewDiaryEntry(uid);
-           }
+            @Override
+            public void onClick(View v) {
+                context = v.getContext();
+                viewDiaryEntry(uid);
+            }
         });
     }
 

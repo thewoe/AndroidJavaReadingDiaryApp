@@ -60,7 +60,6 @@ public class EditDiaryEntryParentCommentsActivity extends AppCompatActivity {
                 Intent EditDiaryEntryMenuScreen = new Intent(getApplicationContext(), EditDiaryEntryMenuActivity.class);
                 EditDiaryEntryMenuScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(EditDiaryEntryMenuScreen);
-                finish();
             }
         });
 
@@ -76,7 +75,6 @@ public class EditDiaryEntryParentCommentsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent HomeScreen = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(HomeScreen);
-                finish();
             }
         });
 
@@ -93,7 +91,6 @@ public class EditDiaryEntryParentCommentsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent AddDiaryEntryScreen = new Intent(getApplicationContext(), AddDiaryEntryInformationActivity.class);
                 startActivity(AddDiaryEntryScreen);
-                finish();
             }
         });
 
@@ -102,7 +99,6 @@ public class EditDiaryEntryParentCommentsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent SettingsScreen = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(SettingsScreen);
-                finish();
             }
         });
     }
@@ -128,7 +124,6 @@ public class EditDiaryEntryParentCommentsActivity extends AppCompatActivity {
                 Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
                 ViewDiaryEntryScreen.putExtra("diaryEntryId",diaryEntryId);
                 startActivity(ViewDiaryEntryScreen);
-                finish();
             }
         }
         else {
