@@ -3,8 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Desktop/ReadingDiary/app/src/main/res/layout/activity_add_diary_entry_information.xml" value="0.2997007268063275" />
-        <entry key="..\:/Desktop/ReadingDiary/app/src/main/res/layout/activity_add_diary_entry_parent_comments.xml" value="0.31124412141941" />
+        <entry key="..\:/Desktop/ReadingDiary/app/src/main/res/layout/activity_add_diary_entry_information.xml" value="0.165" />
+        <entry key="..\:/Desktop/ReadingDiary/app/src/main/res/layout/activity_add_diary_entry_parent_comments.xml" value="0.165" />
         <entry key="..\:/Desktop/ReadingDiary/app/src/main/res/layout/activity_add_diary_entry_pupil_comments.xml" value="0.2997007268063275" />
         <entry key="..\:/Desktop/ReadingDiary/app/src/main/res/layout/activity_add_diary_entry_teacher_comments.xml" value="0.25" />
         <entry key="..\:/Desktop/ReadingDiary/app/src/main/res/layout/activity_edit_diary_entry_information.xml" value="0.25" />
