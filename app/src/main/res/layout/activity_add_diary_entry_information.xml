@@ -418,4 +418,4 @@
         app:layout_constraintStart_toEndOf="@+id/add_diary_entry_information_navigation_button_add"
         app:srcCompat="@drawable/settings_icon" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
