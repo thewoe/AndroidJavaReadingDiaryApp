@@ -8,30 +8,21 @@
     tools:context=".AddDiaryEntryInformationActivity"
     android:background="@drawable/background_image">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/add_diary_entry_information_constraint_parent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/new_diary_entry_information_screen_name"
-        android:fillViewport="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/new_diary_entry_information_navigation_buttons"
+            app:layout_constraintBottom_toTopOf="@+id/new_diary_entry_information_button_cancel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/add_diary_entry_information_constraint_parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:contentDescription="@string/new_diary_entry_information_screen_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/new_diary_entry_information_button_cancel"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
@@ -354,14 +345,6 @@
 
         </ScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/new_diary_entry_information_navigation_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:contentDescription="@string/view_diary_entry_screen_name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
     <Button
         android:id="@+id/new_diary_entry_information_button_cancel"
         android:layout_width="125dp"
@@ -435,6 +418,4 @@
         app:layout_constraintStart_toEndOf="@+id/add_diary_entry_information_navigation_button_add"
         app:srcCompat="@drawable/settings_icon" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
