@@ -64,21 +64,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_diary_entry_information_reading_information_start_date_time_title" />
 
-            <EditText
+            <Button
                 android:id="@+id/edit_reading_start_datetime_input"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:ems="10"
-                android:hint="@string/diary_entry_information_reading_information_start_date_time_hint"
-                android:text=""
-                android:inputType="datetime"
-                android:textColor="@color/black"
-                android:textColorHint="@color/gray"
+                android:text="@string/diary_entry_information_reading_information_start_date_time_hint"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/blue"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_diary_entry_information_reading_information_start_date_time_help"
-                android:importantForAutofill="no" />
+                app:layout_constraintTop_toBottomOf="@+id/edit_diary_entry_information_reading_information_start_date_time_help" />
 
             <TextView
                 android:id="@+id/edit_diary_entry_information_reading_information_end_date_time_title"
@@ -104,21 +99,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_diary_entry_information_reading_information_end_date_time_title" />
 
-            <EditText
+            <Button
                 android:id="@+id/edit_reading_end_datetime_input"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:ems="10"
-                android:hint="@string/diary_entry_information_reading_information_end_date_time_hint"
-                android:text=""
-                android:inputType="datetime"
-                android:textColor="@color/black"
-                android:textColorHint="@color/gray"
+                android:text="@string/diary_entry_information_reading_information_end_date_time_hint"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/blue"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_diary_entry_information_reading_information_end_date_time_help"
-                android:importantForAutofill="no" />
+                app:layout_constraintTop_toBottomOf="@+id/edit_diary_entry_information_reading_information_end_date_time_help" />
 
             <TextView
                 android:id="@+id/edit_diary_entry_information_book_information_title"

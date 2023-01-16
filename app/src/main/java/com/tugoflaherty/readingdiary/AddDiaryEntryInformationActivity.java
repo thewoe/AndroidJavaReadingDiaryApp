@@ -118,13 +118,13 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                 String endPageString = endPageInputField.getText().toString();
                 int pageCount = 0, startPage = 0, endPage = 0;
 
-                if (readingStartOutput.equals(R.id.new_diary_entry_information_reading_information_start_date_time_help)) {
+                if (readingStartOutput.equals(R.string.diary_entry_information_reading_information_start_date_time_help)) {
                     readingStartOutput.setTextColor(getResources().getColor(R.color.red));
                     Message.message(getApplicationContext(),"Select Reading Start Date/Time");
                     fieldsCompleted = false;
                 }
 
-                if (readingEndOutput.equals(R.id.new_diary_entry_information_reading_information_end_date_time_help)) {
+                if (readingEndOutput.equals(R.string.diary_entry_information_reading_information_end_date_time_help)) {
                     readingEndOutput.setTextColor(getResources().getColor(R.color.red));
                     Message.message(getApplicationContext(),"Select Reading End Date/Time");
                     fieldsCompleted = false;
