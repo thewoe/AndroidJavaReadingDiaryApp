@@ -79,42 +79,42 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
             readingProgressBar.setProgress(readingProgressPercentage);
             pagesReadView.setText("Read "+(Integer.parseInt(endPage)-Integer.parseInt(startPage)) +" pages. Read from page "+startPage+" to page "+endPage+" out of a total of "+pageCount+" pages");
             enjoymentRatingView.setRating(Float.parseFloat(enjoymentRating));
-            pupilCommentsView.setText(pupilComments);
+            pupilCommentsView.setText(pupilComments+" - "+pupilName);
             readingAbilityRatingView.setRating(Float.parseFloat(readingAbility));
-            parentCommentsView.setText(parentComments);
+            parentCommentsView.setText(parentComments+" - "+parentName);
             readingProgressRatingView.setRating(Float.parseFloat(readingProgress));
-            teacherCommentsView.setText(teacherComments);
+            teacherCommentsView.setText(teacherComments+" - "+teacherName);
         }
 
         sendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri mailUri = Uri.parse("mailto:readingprogress@kingstonprimary.sch.uk");
-                String subject = pupilName+ " Reading Entry";
-                String body = "Dear Reading Progress Team\n\n";
-                body += pupilName+" has recorded a new reading diary entry.\n\n";
+                String subject = pupilName+ "\'s Reading Entry";
+                String body = "Dear Reading Progress Team,\n\n";
+                body += pupilName+" in "+teacherName+"\'s class has recorded a new reading diary entry.\n\n";
                 body += "Reading Information:\n\n";
-                body += "Reading Start Date:"+readingStart+"\n\n";
-                body += "Reading End Date:"+readingEnd+"\n\n";
+                body += "Reading Start Date: "+readingStart+"\n\n";
+                body += "Reading End Date: "+readingEnd+"\n\n";
                 body += "Book Information:\n\n";
-                body += "Book Title:"+bookTitle+"\n\n";
-                body += "Book Author:"+bookAuthor+"\n\n";
-                body += "Book Page Count:"+pageCount+"\n\n";
+                body += "Book Title: "+bookTitle+"\n\n";
+                body += "Book Author :"+bookAuthor+"\n\n";
+                body += "Book Page Count: "+pageCount+"\n\n";
                 body += "Page Information:\n\n";
-                body += "Start Page:"+startPage+"\n\n";
-                body += "End Page:"+endPage+"\n\n";
-                body += "Pages Read:"+(Integer.parseInt(endPage)-Integer.parseInt(startPage))+"\n\n";
-                body += "Pupil Feedback:\n\n";
-                body += "Pupil Enjoyment Rating:"+enjoymentRating+"/5\n\n";
-                body += "Pupil Additional Comments:"+pupilComments+"\n\n";
-                body += "Parent Feedback:\n\n";
-                body += "Parent Reading Ability Rating:"+readingAbility+"/5\n\n";
-                body += "Parent Additional Comments:"+parentComments+"\n\n";
-                body += "Teacher Feedback:\n\n";
-                body += "Teacher Reading Ability Rating:"+readingProgress+"/5\n\n";
-                body += "Teacher Additional Comments:"+teacherComments+"\n\n";
+                body += "Start Page: "+startPage+"\n\n";
+                body += "End Page: "+endPage+"\n\n";
+                body += "Pages Read: "+(Integer.parseInt(endPage)-Integer.parseInt(startPage))+"\n\n";
+                body += "Pupil Feedback ("+pupilName+"):\n\n";
+                body += "Pupil Enjoyment Rating: "+enjoymentRating+"/5\n\n";
+                body += "Pupil Additional Comments: "+pupilComments+"\n\n";
+                body += "Parent Feedback ("+parentName+"):\n\n";
+                body += "Parent Reading Ability Rating: "+readingAbility+"/5\n\n";
+                body += "Parent Additional Comments: "+parentComments+"\n\n";
+                body += "Teacher Feedback ("+teacherName+"):\n\n";
+                body += "Teacher Reading Ability Rating: "+readingProgress+"/5\n\n";
+                body += "Teacher Additional Comments: "+teacherComments+"\n\n";
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                body += "Information correct as of:"+dateFormat.format(new Date())+"\n\n";
+                body += "Information correct as of: "+dateFormat.format(new Date())+"\n\n";
                 body += "Regards,\n\n";
                 body += "Kingston Primary School Reading Diary App";
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO,mailUri);
