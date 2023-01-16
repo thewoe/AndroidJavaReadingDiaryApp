@@ -1,23 +1,39 @@
 package com.tugoflaherty.readingdiary;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class AddDiaryEntryInformationActivity extends AppCompatActivity {
+
+    TextView readingStartOutput, readingEndOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diary_entry_information);
 
-        EditText readingStartInputField = (EditText) findViewById(R.id.new_reading_start_datetime_input);
-        EditText readingEndInputField = (EditText) findViewById(R.id.new_reading_end_datetime_input);
+        SimpleDateFormat dateTimeFormat = new SimpleDateFormat("EEEE dd/MM/yyyy hh:mm");
+
+        readingStartOutput = (TextView) findViewById(R.id.new_diary_entry_information_reading_information_start_date_time_help);
+        readingEndOutput = (TextView) findViewById(R.id.new_diary_entry_information_reading_information_end_date_time_help);
+        Button readingStartInputField = (Button) findViewById(R.id.new_reading_start_datetime_input);
+        Button readingEndInputField = (Button) findViewById(R.id.new_reading_end_datetime_input);
         EditText bookTitleInputField = (EditText) findViewById(R.id.new_book_title_input);
         EditText bookAuthorInputField = (EditText) findViewById(R.id.new_book_author_input);
         EditText pageCountInputField = (EditText) findViewById(R.id.new_page_count_input);
@@ -29,6 +45,52 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
         ImageButton viewReadingHistoryNav = (ImageButton) findViewById(R.id.add_diary_entry_information_navigation_button_history);
         ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.add_diary_entry_information_navigation_button_add);
         ImageButton settingsNav = (ImageButton) findViewById(R.id.add_diary_entry_information_navigation_button_settings);
+
+        readingStartInputField.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                Calendar currentDateTime = Calendar.getInstance();
+                Calendar startDateTime = Calendar.getInstance();
+                new DatePickerDialog(AddDiaryEntryInformationActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int startYear, int startMonth, int startDay) {
+                        startDateTime.set(startYear, startMonth, startDay);
+                        new TimePickerDialog(AddDiaryEntryInformationActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int startHour, int startMinute) {
+                                startDateTime.set(Calendar.HOUR_OF_DAY, startHour);
+                                startDateTime.set(Calendar.MINUTE, startMinute);
+                                readingStartOutput.setText(dateTimeFormat.format(startDateTime.getTime()));
+                            }
+                        }, currentDateTime.get(Calendar.HOUR_OF_DAY), currentDateTime.get(Calendar.MINUTE), true).show();
+                    }
+                }, currentDateTime.get(Calendar.YEAR), currentDateTime.get(Calendar.MONTH), currentDateTime.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        readingEndInputField.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                Calendar currentDateTime = Calendar.getInstance();
+                Calendar endDateTime = Calendar.getInstance();
+                new DatePickerDialog(AddDiaryEntryInformationActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int startYear, int startMonth, int startDay) {
+                        endDateTime.set(startYear, startMonth, startDay);
+                        new TimePickerDialog(AddDiaryEntryInformationActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int startHour, int startMinute) {
+                                endDateTime.set(Calendar.HOUR_OF_DAY, startHour);
+                                endDateTime.set(Calendar.MINUTE, startMinute);
+                                readingEndOutput.setText(dateTimeFormat.format(endDateTime.getTime()));
+                            }
+                        }, currentDateTime.get(Calendar.HOUR_OF_DAY), currentDateTime.get(Calendar.MINUTE), true).show();
+                    }
+                }, currentDateTime.get(Calendar.YEAR), currentDateTime.get(Calendar.MONTH), currentDateTime.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +111,6 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean fieldsCompleted = true;
-                String readingStart = readingStartInputField.getText().toString();
-                String readingEnd = readingEndInputField.getText().toString();
                 String bookTitle = bookTitleInputField.getText().toString();
                 String bookAuthor = bookAuthorInputField.getText().toString();
                 String pageCountString = pageCountInputField.getText().toString();
@@ -58,15 +118,15 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                 String endPageString = endPageInputField.getText().toString();
                 int pageCount = 0, startPage = 0, endPage = 0;
 
-                if ((readingStart.equals(null)) || (readingStart.equals(""))) {
-                    readingStartInputField.setHintTextColor(getResources().getColor(R.color.red));
-                    Message.message(getApplicationContext(),"Enter Reading Start Date/Time");
+                if (readingStartOutput.equals(R.id.new_diary_entry_information_reading_information_start_date_time_help)) {
+                    readingStartOutput.setTextColor(getResources().getColor(R.color.red));
+                    Message.message(getApplicationContext(),"Select Reading Start Date/Time");
                     fieldsCompleted = false;
                 }
 
-                if ((readingEnd.equals(null)) || (readingEnd.equals(""))) {
-                    readingEndInputField.setHintTextColor(getResources().getColor(R.color.red));
-                    Message.message(getApplicationContext(),"Enter Reading End Date/Time");
+                if (readingEndOutput.equals(R.id.new_diary_entry_information_reading_information_end_date_time_help)) {
+                    readingEndOutput.setTextColor(getResources().getColor(R.color.red));
+                    Message.message(getApplicationContext(),"Select Reading End Date/Time");
                     fieldsCompleted = false;
                 }
 
@@ -137,8 +197,8 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
 
                 if (fieldsCompleted == true) {
                     Intent AddDiaryEntryPupilCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryPupilCommentsActivity.class);
-                    AddDiaryEntryPupilCommentsScreen.putExtra("readingStart", readingStart);
-                    AddDiaryEntryPupilCommentsScreen.putExtra("readingEnd", readingEnd);
+                    AddDiaryEntryPupilCommentsScreen.putExtra("readingStart", readingStartOutput.getText().toString());
+                    AddDiaryEntryPupilCommentsScreen.putExtra("readingEnd", readingEndOutput.getText().toString());
                     AddDiaryEntryPupilCommentsScreen.putExtra("bookTitle", bookTitle);
                     AddDiaryEntryPupilCommentsScreen.putExtra("bookAuthor", bookAuthor);
                     AddDiaryEntryPupilCommentsScreen.putExtra("pageCount",pageCount);

@@ -41,11 +41,11 @@
     <string name="new_diary_entry_information_screen_name">Add New Diary Entry</string>
     <string name="diary_entry_information_reading_information_title">Reading Information</string>
     <string name="diary_entry_information_reading_information_start_date_time_title">Reading Start Date and Time</string>
-    <string name="diary_entry_information_reading_information_start_date_time_hint">Enter reading start date and time...</string>
-    <string name="diary_entry_information_reading_information_start_date_time_help">Please enter the date and time you started reading.\nEnter in format: DD/MM/YYYY HH:MM.\n\nHint: tap /: button for / and hold button for :</string>
+    <string name="diary_entry_information_reading_information_start_date_time_hint">Select Reading Start Date/Time</string>
+    <string name="diary_entry_information_reading_information_start_date_time_help">Please select the date and time you started reading</string>
     <string name="diary_entry_information_reading_information_end_date_time_title">Reading End Date and Time</string>
-    <string name="diary_entry_information_reading_information_end_date_time_hint">Enter reading end date and time...</string>
-    <string name="diary_entry_information_reading_information_end_date_time_help">Please enter the date and time you finished reading.\nEnter in format: DD/MM/YYYY HH:MM.\n\nHint: tap /: button for / and hold button for :</string>
+    <string name="diary_entry_information_reading_information_end_date_time_hint">Select Reading End Date/Time</string>
+    <string name="diary_entry_information_reading_information_end_date_time_help">Please select the date and time you finished reading</string>
     <string name="diary_entry_information_book_information_title">Book Information</string>
     <string name="diary_entry_information_book_information_book_title_title">Book Title</string>
     <string name="diary_entry_information_book_information_book_title_help">Please enter the name of the book you read</string>
