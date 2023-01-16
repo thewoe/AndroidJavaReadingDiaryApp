@@ -142,14 +142,14 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder confirmDeleteDialogBuilder = new AlertDialog.Builder(ViewDiaryEntryActivity.this);
-                confirmDeleteDialogBuilder.setMessage("Are you sure you want to delete this reading diary entry?").setTitle("Confirm Delete")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                confirmDeleteDialogBuilder.setMessage(R.string.reading_diary_dialog_delete_record_message).setTitle(R.string.reading_diary_dialog_delete_record_title)
+                .setPositiveButton(R.string.button_confirm, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         deleteDiaryEntry(v);
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.button_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                     }

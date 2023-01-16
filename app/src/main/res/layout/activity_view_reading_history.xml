@@ -52,18 +52,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/view_reading_history_navigation_button_home" />
 
-    <Button
-        android:id="@+id/view_reading_history_button_view_entry"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="760dp"
-        android:text="Dummy - View Entry"
-        app:backgroundTint="#216EF3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageButton
         android:id="@+id/view_reading_history_navigation_button_home"
         android:layout_width="wrap_content"
@@ -83,7 +71,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginBottom="0dp"
-        android:contentDescription="@string/home_view_reading_history"
+        android:contentDescription="@string/reading_history_screen_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view_reading_history_navigation_button_home"
         app:srcCompat="@drawable/list_icon"

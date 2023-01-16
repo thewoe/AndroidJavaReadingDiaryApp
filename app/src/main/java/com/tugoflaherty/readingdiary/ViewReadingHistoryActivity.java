@@ -32,7 +32,6 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
 
         TextView searchTitle = (TextView) findViewById(R.id.view_reading_history_title);
         SearchView diaryEntriesSearch = (SearchView) findViewById(R.id.view_reading_history_search);
-        Button viewDiaryEntry = (Button) findViewById(R.id.view_reading_history_button_view_entry);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_home);
         ImageButton viewReadingHistoryNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_history);
         ImageButton addDiaryEntryNav = (ImageButton) findViewById(R.id.view_reading_history_navigation_button_add);
@@ -75,15 +74,6 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
             readingHistoryList.setVisibility(View.GONE);
             diaryEntriesSearch.setVisibility(View.GONE);
         }
-
-        viewDiaryEntry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent ViewDiaryEntryScreen = new Intent(getApplicationContext(), ViewDiaryEntryActivity.class);
-                ViewDiaryEntryScreen.putExtra("diaryEntryId",1); //hardcoded temporarily - must be dynamic from db from clicked list item
-                startActivity(ViewDiaryEntryScreen);
-            }
-        });
 
         homepageNav.setOnClickListener(new View.OnClickListener() {
             @Override

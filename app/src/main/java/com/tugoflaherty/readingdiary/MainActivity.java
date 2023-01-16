@@ -30,15 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
         if (helper.getUserData().equals(null) || helper.getUserData().equals("")) {
             AlertDialog.Builder noUsersFoundDialogBuilder = new AlertDialog.Builder(this);
-            noUsersFoundDialogBuilder.setMessage("Welcome to the Reading Diary app. No users have been created yet, but are required to use the app and identify users with school records. Set up users now to use the app?").setTitle("No users found")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            noUsersFoundDialogBuilder.setMessage(R.string.home_dialog_create_users_message).setTitle(R.string.home_dialog_create_users_title)
+                    .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             Intent ManageUsersScreen = new Intent(getApplicationContext(), EditUsersActivity.class);
                             startActivity(ManageUsersScreen);
                         }
                     })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(R.string.button_exit, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             System.exit(0);

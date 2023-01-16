@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,7 +59,6 @@ public class AddDiaryEntryParentCommentsActivity extends AppCompatActivity {
                     fieldsCompleted = false;
                 }
                 if (fieldsCompleted == true) {
-                    Log.i("NEXT - ACCEPTED","Reading Ability Rating: "+readingAbilityRating+" Parent Comments: "+parentComments);
                     Intent AddDiaryEntryTeacherCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryTeacherCommentsActivity.class);
                     AddDiaryEntryTeacherCommentsScreen.putExtra("readingStart", readingStart);
                     AddDiaryEntryTeacherCommentsScreen.putExtra("readingEnd", readingEnd);

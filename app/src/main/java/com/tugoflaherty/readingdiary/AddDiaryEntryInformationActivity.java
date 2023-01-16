@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -102,7 +101,6 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                             endPageInputField.setTextColor(getResources().getColor(R.color.red));
                             startPageInputField.setHintTextColor(getResources().getColor(R.color.red));
                             fieldsCompleted = false;
-                            Log.i("startpage<|>pagecount","Rejected");
                         }
                     }
                     catch (Exception e) {
@@ -130,7 +128,6 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                     }
                 }
                 if (fieldsCompleted == true) {
-                    Log.i("NEXT - ACCEPTED","Reading Start Time: "+readingStart+" Reading End Time: "+readingEnd+" Book Title: "+bookTitle+" Book Author: "+bookAuthor+" Page Count: "+pageCount+" Start Page: "+startPage+" End Page: "+endPage);
                     Intent AddDiaryEntryPupilCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryPupilCommentsActivity.class);
                     AddDiaryEntryPupilCommentsScreen.putExtra("readingStart", readingStart);
                     AddDiaryEntryPupilCommentsScreen.putExtra("readingEnd", readingEnd);
