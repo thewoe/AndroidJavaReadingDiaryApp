@@ -22,6 +22,7 @@ public class EditUsersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_users);
+
         helper = new myDbAdapter(this);
 
         pupilNameInputField = (EditText) findViewById(R.id.edit_users_pupils_input);
@@ -37,6 +38,7 @@ public class EditUsersActivity extends AppCompatActivity {
         if ((!helper.getUserData().equals(null)) && (!helper.getUserData().equals(""))) {
             String returnedData = helper.getUserData();
             String[] userData = returnedData.split("¬");
+
             uid = userData[0];
             pupilNameInputField.setText(userData[1]);
             parentNameInputField.setText(userData[2]);
@@ -90,26 +92,31 @@ public class EditUsersActivity extends AppCompatActivity {
             }
         });
     }
+
     public void addUser(View view) {
         boolean fieldsCompleted = true;
         String pupilName = pupilNameInputField.getText().toString();
         String parentName = parentNameInputField.getText().toString();
         String teacherName = teacherNameInputField.getText().toString();
+
         if ((pupilName.equals(null)) || (pupilName.equals(""))) {
             pupilNameInputField.setHintTextColor(getResources().getColor(R.color.red));
             Message.message(getApplicationContext(),"Enter Pupil Name");
             fieldsCompleted = false;
         }
+
         if ((parentName.equals(null)) || (parentName.equals(""))) {
             parentNameInputField.setHintTextColor(getResources().getColor(R.color.red));
             Message.message(getApplicationContext(),"Enter Parent Name");
             fieldsCompleted = false;
         }
+
         if ((teacherName.equals(null)) || (teacherName.equals(""))) {
             teacherNameInputField.setHintTextColor(getResources().getColor(R.color.red));
             Message.message(getApplicationContext(),"Enter Teacher Name");
             fieldsCompleted = false;
         }
+
         if (fieldsCompleted == true) {
             if (uid == null) {
                 long id = helper.insertUserData(pupilName, parentName, teacherName);

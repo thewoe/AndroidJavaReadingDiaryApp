@@ -20,6 +20,7 @@ public class EditDiaryEntryPupilCommentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary_entry_pupil_comments);
+
         diaryEntryId = getIntent().getStringExtra("diaryEntryId");
         helper = new myDbAdapter(this);
 
@@ -35,6 +36,7 @@ public class EditDiaryEntryPupilCommentsActivity extends AppCompatActivity {
         if ((!helper.getDiaryEntryDataById(diaryEntryId).equals(null)) && (!helper.getDiaryEntryDataById(diaryEntryId).equals(""))) {
             String returnedData = helper.getDiaryEntryDataById(diaryEntryId);
             String[] diaryEntryData = returnedData.split("¬");
+
             uid = diaryEntryData[0];
             readingStart = diaryEntryData[1];
             readingEnd = diaryEntryData[2];
@@ -49,6 +51,7 @@ public class EditDiaryEntryPupilCommentsActivity extends AppCompatActivity {
             parentComments = diaryEntryData[11];
             readingProgress = diaryEntryData[12];
             teacherComments = diaryEntryData[13];
+
             enjoymentRatingInputField.setRating(Float.parseFloat(enjoymentRating));
             pupilCommentsInputField.setText(pupilComments);
         }
@@ -101,17 +104,20 @@ public class EditDiaryEntryPupilCommentsActivity extends AppCompatActivity {
             }
         });
     }
+
     public void updateDiaryEntry(View view) {
         boolean fieldsCompleted = true;
         Float enjoymentRating = 0.0F;
         String pupilComments = "";
         enjoymentRating = enjoymentRatingInputField.getRating();
         pupilComments = pupilCommentsInputField.getText().toString();
+
         if ((pupilComments.equals(null)) || (pupilComments.equals(""))) {
             pupilCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
             Message.message(getApplicationContext(), "Pupil Comments Must Be Completed");
             fieldsCompleted = false;
         }
+
         if (fieldsCompleted == true) {
             String enjoymentRatingString = String.valueOf(enjoymentRating);
             int count = helper.updateDiaryEntry(uid,readingStart,readingEnd,bookTitle,bookAuthor,pageCount,startPage,endPage,enjoymentRatingString,pupilComments,readingAbility,parentComments,readingProgress,teacherComments,"1");

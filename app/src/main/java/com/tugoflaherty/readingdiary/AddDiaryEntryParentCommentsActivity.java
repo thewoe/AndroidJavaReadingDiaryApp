@@ -16,6 +16,7 @@ public class AddDiaryEntryParentCommentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diary_entry_parent_comments);
+
         String readingStart = getIntent().getStringExtra("readingStart");
         String readingEnd = getIntent().getStringExtra("readingEnd");
         String bookTitle = getIntent().getStringExtra("bookTitle");
@@ -53,11 +54,13 @@ public class AddDiaryEntryParentCommentsActivity extends AppCompatActivity {
                 String parentComments = "";
                 readingAbilityRating = readingAbilityRatingInputField.getRating();
                 parentComments = parentCommentsInputField.getText().toString();
+
                 if ((parentComments.equals(null)) || (parentComments.equals(""))) {
                     parentCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
                     Message.message(getApplicationContext(), "Parent Comments Must Be Completed");
                     fieldsCompleted = false;
                 }
+
                 if (fieldsCompleted == true) {
                     Intent AddDiaryEntryTeacherCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryTeacherCommentsActivity.class);
                     AddDiaryEntryTeacherCommentsScreen.putExtra("readingStart", readingStart);

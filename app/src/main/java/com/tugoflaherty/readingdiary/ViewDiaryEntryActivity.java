@@ -14,10 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class ViewDiaryEntryActivity extends AppCompatActivity {
@@ -32,6 +29,7 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_diary_entry);
+
         diaryEntryId = getIntent().getStringExtra("diaryEntryId");
         helper = new myDbAdapter(this);
 
@@ -55,6 +53,7 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
         if ((!helper.getDiaryEntryDataById(diaryEntryId).equals(null)) && (!helper.getDiaryEntryDataById(diaryEntryId).equals(""))) {
             String returnedData = helper.getDiaryEntryDataById(diaryEntryId);
             String[] diaryEntryData = returnedData.split("¬");
+
             uid = diaryEntryData[0];
             readingStart = diaryEntryData[1];
             readingEnd = diaryEntryData[2];
@@ -121,9 +120,11 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO,mailUri);
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
                 emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+
                 if (emailIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(emailIntent);
-                } else {
+                }
+                else {
                     Message.message(getApplicationContext(), "No Email Client Apps Available");
                 }
             }
@@ -143,24 +144,27 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder confirmDeleteDialogBuilder = new AlertDialog.Builder(ViewDiaryEntryActivity.this);
                 confirmDeleteDialogBuilder.setMessage(R.string.reading_diary_dialog_delete_record_message).setTitle(R.string.reading_diary_dialog_delete_record_title)
-                .setPositiveButton(R.string.button_confirm, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        deleteDiaryEntry(v);
-                    }
-                })
-                .setNegativeButton(R.string.button_cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                    }
+                    .setPositiveButton(R.string.button_confirm, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            deleteDiaryEntry(v);
+                        }
+                    })
+                    .setNegativeButton(R.string.button_cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
                 });
                 AlertDialog confirmDeleteDialog = confirmDeleteDialogBuilder.create();
                 confirmDeleteDialog.show();
             }
         });
     }
+
     public void deleteDiaryEntry(View view) {
         int count = helper.deleteDiaryEntry(diaryEntryId);
+
         if (count <= 0) {
             Message.message(getApplicationContext(), "Delete Unsuccessful - Please Try Again");
         }

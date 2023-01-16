@@ -20,6 +20,7 @@ public class EditDiaryEntryParentCommentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary_entry_parent_comments);
+
         diaryEntryId = getIntent().getStringExtra("diaryEntryId");
         helper = new myDbAdapter(this);
 
@@ -35,6 +36,7 @@ public class EditDiaryEntryParentCommentsActivity extends AppCompatActivity {
         if ((!helper.getDiaryEntryDataById(diaryEntryId).equals(null)) && (!helper.getDiaryEntryDataById(diaryEntryId).equals(""))) {
             String returnedData = helper.getDiaryEntryDataById(diaryEntryId);
             String[] diaryEntryData = returnedData.split("¬");
+
             uid = diaryEntryData[0];
             readingStart = diaryEntryData[1];
             readingEnd = diaryEntryData[2];
@@ -49,6 +51,7 @@ public class EditDiaryEntryParentCommentsActivity extends AppCompatActivity {
             parentComments = diaryEntryData[11];
             readingProgress = diaryEntryData[12];
             teacherComments = diaryEntryData[13];
+
             readingAbilityRatingInputField.setRating(Float.parseFloat(readingAbility));
             parentCommentsInputField.setText(parentComments);
         }
@@ -101,17 +104,20 @@ public class EditDiaryEntryParentCommentsActivity extends AppCompatActivity {
             }
         });
     }
+
     public void updateDiaryEntry(View view) {
-            boolean fieldsCompleted = true;
-            Float readingAbilityRating = 0.0F;
-            String parentComments = "";
-            readingAbilityRating = readingAbilityRatingInputField.getRating();
-            parentComments = parentCommentsInputField.getText().toString();
-            if ((parentComments.equals(null)) || (parentComments.equals(""))) {
-                parentCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
-                Message.message(getApplicationContext(), "Parent Comments Must Be Completed");
-                fieldsCompleted = false;
-            }
+        boolean fieldsCompleted = true;
+        Float readingAbilityRating = 0.0F;
+        String parentComments = "";
+        readingAbilityRating = readingAbilityRatingInputField.getRating();
+        parentComments = parentCommentsInputField.getText().toString();
+
+        if ((parentComments.equals(null)) || (parentComments.equals(""))) {
+            parentCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
+            Message.message(getApplicationContext(), "Parent Comments Must Be Completed");
+            fieldsCompleted = false;
+        }
+
         if (fieldsCompleted == true) {
             String readingAbility = String.valueOf(readingAbilityRating);
             int count = helper.updateDiaryEntry(uid,readingStart,readingEnd,bookTitle,bookAuthor,pageCount,startPage,endPage,enjoymentRating,pupilComments,readingAbility,parentComments,readingProgress,teacherComments,"1");

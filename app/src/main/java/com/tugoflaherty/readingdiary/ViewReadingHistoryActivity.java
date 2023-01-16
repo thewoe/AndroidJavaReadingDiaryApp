@@ -7,17 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class ViewReadingHistoryActivity extends AppCompatActivity {
     RecyclerView readingHistoryList;
@@ -28,6 +24,7 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reading_history);
+
         helper = new myDbAdapter(this);
 
         TextView searchTitle = (TextView) findViewById(R.id.view_reading_history_title);
@@ -40,34 +37,38 @@ public class ViewReadingHistoryActivity extends AppCompatActivity {
 
         noRecords.setText("");
         searchTitle.setText("Click the Search icon to search records");
-            String returnedData = helper.getDiaryEntryData();
-            String[] readingHistoryDataArray = returnedData.split("`");
-            List<String> readingHistoryData = new ArrayList<String>(Arrays.asList(readingHistoryDataArray));
-            readingHistoryList = (RecyclerView) findViewById(R.id.view_reading_history_list);
-            readingHistoryAdapter = new myHistoryAdapter(readingHistoryData);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-            readingHistoryList.setLayoutManager(layoutManager);
-            readingHistoryList.setAdapter(readingHistoryAdapter);
-            diaryEntriesSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    return false;
-                }
 
-                @Override
-                public boolean onQueryTextChange(String searchField) {
+        String returnedData = helper.getDiaryEntryData();
+        String[] readingHistoryDataArray = returnedData.split("`");
+        List<String> readingHistoryData = new ArrayList<String>(Arrays.asList(readingHistoryDataArray));
+        readingHistoryList = (RecyclerView) findViewById(R.id.view_reading_history_list);
+        readingHistoryAdapter = new myHistoryAdapter(readingHistoryData);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
 
-                    List<String> filteredReadingHistoryData = new ArrayList<String>();
-                    for (String diaryEntry : readingHistoryData ) {
-                        if (diaryEntry.toLowerCase().contains(searchField.trim().toLowerCase())) {
-                            filteredReadingHistoryData.add(diaryEntry);
-                        }
+        readingHistoryList.setLayoutManager(layoutManager);
+        readingHistoryList.setAdapter(readingHistoryAdapter);
+
+        diaryEntriesSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String searchField) {
+
+                List<String> filteredReadingHistoryData = new ArrayList<String>();
+                for (String diaryEntry : readingHistoryData ) {
+                    if (diaryEntry.toLowerCase().contains(searchField.trim().toLowerCase())) {
+                        filteredReadingHistoryData.add(diaryEntry);
                     }
-                    readingHistoryAdapter.setDataSet(filteredReadingHistoryData);
-                    readingHistoryAdapter.notifyDataSetChanged();
-                    return true;
                 }
-            });
+                readingHistoryAdapter.setDataSet(filteredReadingHistoryData);
+                readingHistoryAdapter.notifyDataSetChanged();
+                return true;
+            }
+        });
+
         if (helper.getDiaryEntryData().equals(null) || helper.getDiaryEntryData().equals("")) {
             noRecords.setText("Add a new diary entry to view your reading history here");
             searchTitle.setText("No Diary Entry Records To Display");

@@ -35,7 +35,6 @@
     <!-- view diary entry start -->
     <string name="view_diary_entry_screen_name">View Diary Entry</string>
     <string name="diary_entry_page_information_pages_read_title">Pages Read</string>
-
     <!-- view diary entry end   -->
 
     <!-- new diary entry information start -->
@@ -64,7 +63,6 @@
     <string name="diary_entry_information_page_information_end_page_title">End Page</string>
     <string name="diary_entry_information_page_information_end_page_help">Please enter the page number of the last page you read</string>
     <string name="diary_entry_information_page_information_end_page_hint">Enter reading ending page...</string>
-
     <!-- new diary entry information end   -->
 
     <!-- new diary entry pupil comments start -->

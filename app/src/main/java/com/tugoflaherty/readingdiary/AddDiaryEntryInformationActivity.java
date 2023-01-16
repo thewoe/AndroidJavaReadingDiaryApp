@@ -57,26 +57,31 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                 String startPageString = startPageInputField.getText().toString();
                 String endPageString = endPageInputField.getText().toString();
                 int pageCount = 0, startPage = 0, endPage = 0;
+
                 if ((readingStart.equals(null)) || (readingStart.equals(""))) {
                     readingStartInputField.setHintTextColor(getResources().getColor(R.color.red));
                     Message.message(getApplicationContext(),"Enter Reading Start Date/Time");
                     fieldsCompleted = false;
                 }
+
                 if ((readingEnd.equals(null)) || (readingEnd.equals(""))) {
                     readingEndInputField.setHintTextColor(getResources().getColor(R.color.red));
                     Message.message(getApplicationContext(),"Enter Reading End Date/Time");
                     fieldsCompleted = false;
                 }
+
                 if ((bookTitle.equals(null)) || (bookTitle.equals(""))) {
                     bookTitleInputField.setHintTextColor(getResources().getColor(R.color.red));
                     Message.message(getApplicationContext(),"Enter Book Title");
                     fieldsCompleted = false;
                 }
+
                 if ((bookAuthor.equals(null)) || (bookAuthor.equals(""))) {
                     bookAuthorInputField.setHintTextColor(getResources().getColor(R.color.red));
                     Message.message(getApplicationContext(),"Enter Book Author");
                     fieldsCompleted = false;
                 }
+
                 if ((!pageCountString.equals(null)) && (!pageCountString.equals(""))) {
                     try {
                         pageCount = Integer.parseInt(pageCountString);
@@ -94,6 +99,7 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                         fieldsCompleted = false;
                     }
                 }
+
                 if ((!startPageString.equals(null)) && (!startPageString.equals(""))) {
                     try {
                         startPage = Integer.parseInt(startPageString);
@@ -110,6 +116,7 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                         fieldsCompleted = false;
                     }
                 }
+
                 if ((!endPageString.equals(null)) && (!endPageString.equals(""))) {
                     try {
                         endPage = Integer.parseInt(endPageString);
@@ -127,6 +134,7 @@ public class AddDiaryEntryInformationActivity extends AppCompatActivity {
                         fieldsCompleted = false;
                     }
                 }
+
                 if (fieldsCompleted == true) {
                     Intent AddDiaryEntryPupilCommentsScreen = new Intent(getApplicationContext(), AddDiaryEntryPupilCommentsActivity.class);
                     AddDiaryEntryPupilCommentsScreen.putExtra("readingStart", readingStart);

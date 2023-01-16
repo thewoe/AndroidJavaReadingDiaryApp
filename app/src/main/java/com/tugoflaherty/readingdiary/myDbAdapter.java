@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
-
 public class myDbAdapter {
 
     myDbHelper myHelper;
@@ -223,6 +221,7 @@ public class myDbAdapter {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
             this.context = context;
         }
+
         public void onCreate(SQLiteDatabase db) {
             try {
                 db.execSQL(CREATE_USERS_TABLE);
@@ -231,6 +230,7 @@ public class myDbAdapter {
                 Message.message(context,""+e);
             }
         }
+
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             try {

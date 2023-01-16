@@ -17,6 +17,7 @@ public class AddDiaryEntryTeacherCommentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diary_entry_teacher_comments);
+
         helper = new myDbAdapter(this);
         String readingStart = getIntent().getStringExtra("readingStart");
         String readingEnd = getIntent().getStringExtra("readingEnd");
@@ -57,11 +58,13 @@ public class AddDiaryEntryTeacherCommentsActivity extends AppCompatActivity {
                 String teacherComments = "";
                 readingProgressRating = readingProgressInputField.getRating();
                 teacherComments = teacherCommentsInputField.getText().toString();
+
                 if ((teacherComments.equals(null)) || (teacherComments.equals(""))) {
                     teacherCommentsInputField.setHintTextColor(getResources().getColor(R.color.red));
                     Message.message(getApplicationContext(), "Teacher Comments Must Be Completed");
                     fieldsCompleted = false;
                 }
+
                 if (fieldsCompleted == true) {
                     String readingProgressString = String.valueOf(readingProgressRating);
                     long id = helper.insertDiaryEntryData(readingStart, readingEnd, bookTitle, bookAuthor, pageCount, startPage, endPage, enjoymentRating, pupilComments, readingAbilityRating, parentComments, readingProgressString, teacherComments,"1");

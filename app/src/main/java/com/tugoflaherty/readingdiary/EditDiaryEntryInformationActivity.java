@@ -18,6 +18,7 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary_entry_information);
+
         diaryEntryId = getIntent().getStringExtra("diaryEntryId");
         helper = new myDbAdapter(this);
 
@@ -38,6 +39,7 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
         if ((!helper.getDiaryEntryDataById(diaryEntryId).equals(null)) && (!helper.getDiaryEntryDataById(diaryEntryId).equals(""))) {
             String returnedData = helper.getDiaryEntryDataById(diaryEntryId);
             String[] diaryEntryData = returnedData.split("¬");
+
             uid = diaryEntryData[0];
             readingStart = diaryEntryData[1];
             readingEnd = diaryEntryData[2];
@@ -52,6 +54,7 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
             parentComments = diaryEntryData[11];
             readingProgress = diaryEntryData[12];
             teacherComments = diaryEntryData[13];
+
             readingStartInputField.setText(readingStart);
             readingEndInputField.setText(readingEnd);
             bookTitleInputField.setText(bookTitle);
@@ -109,6 +112,7 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
             }
         });
     }
+
     public void updateDiaryEntry(View view) {
         boolean fieldsCompleted = true;
         String readingStart = readingStartInputField.getText().toString();
@@ -119,26 +123,31 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
         String startPageString = startPageInputField.getText().toString();
         String endPageString = endPageInputField.getText().toString();
         int pageCount = 0, startPage = 0, endPage = 0;
+
         if ((readingStart.equals(null)) || (readingStart.equals(""))) {
             readingStartInputField.setHintTextColor(getResources().getColor(R.color.red));
             Message.message(getApplicationContext(),"Enter Reading Start Date/Time");
             fieldsCompleted = false;
         }
+
         if ((readingEnd.equals(null)) || (readingEnd.equals(""))) {
             readingEndInputField.setHintTextColor(getResources().getColor(R.color.red));
             Message.message(getApplicationContext(),"Enter Reading End Date/Time");
             fieldsCompleted = false;
         }
+
         if ((bookTitle.equals(null)) || (bookTitle.equals(""))) {
             bookTitleInputField.setHintTextColor(getResources().getColor(R.color.red));
             Message.message(getApplicationContext(),"Enter Book Title");
             fieldsCompleted = false;
         }
+
         if ((bookAuthor.equals(null)) || (bookAuthor.equals(""))) {
             bookAuthorInputField.setHintTextColor(getResources().getColor(R.color.red));
             Message.message(getApplicationContext(),"Enter Book Author");
             fieldsCompleted = false;
         }
+
         if ((!pageCountString.equals(null)) && (!pageCountString.equals(""))) {
             try {
                 pageCount = Integer.parseInt(pageCountString);
@@ -155,6 +164,7 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
                 fieldsCompleted = false;
             }
         }
+
         if ((!startPageString.equals(null)) && (!startPageString.equals(""))) {
             try {
                 startPage = Integer.parseInt(startPageString);
@@ -171,6 +181,7 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
                 fieldsCompleted = false;
             }
         }
+
         if ((!endPageString.equals(null)) && (!endPageString.equals(""))) {
             try {
                 endPage = Integer.parseInt(endPageString);
@@ -187,11 +198,11 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
                 fieldsCompleted = false;
             }
         }
+
         if (fieldsCompleted == true) {
             String pageCountValue = String.valueOf(pageCount);
             String startPageValue = String.valueOf(startPage);
             String endPageValue = String.valueOf(endPage);
-
             int count = helper.updateDiaryEntry(uid,readingStart,readingEnd,bookTitle,bookAuthor,pageCountValue,startPageValue,endPageValue,enjoymentRating,pupilComments,readingAbility,parentComments,readingProgress,teacherComments,"1");
             if (count <= 0) {
                 Message.message(getApplicationContext(), "Update Unsuccessful - Please Try Again");
