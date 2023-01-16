@@ -11,7 +11,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/diary_entry_information_button_cancel"
+            app:layout_constraintBottom_toTopOf="@+id/new_diary_entry_information_button_cancel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -22,7 +22,7 @@
                 android:contentDescription="@string/new_diary_entry_information_screen_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/diary_entry_information_button_cancel"
+                app:layout_constraintBottom_toTopOf="@+id/new_diary_entry_information_button_cancel"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView

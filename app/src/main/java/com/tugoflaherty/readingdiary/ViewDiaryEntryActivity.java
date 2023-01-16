@@ -1,12 +1,18 @@
 package com.tugoflaherty.readingdiary;
 
+import static android.text.Html.FROM_HTML_OPTION_USE_CSS_COLORS;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -90,43 +96,43 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Uri mailUri = Uri.parse("mailto:readingprogress@kingstonprimary.sch.uk");
-                String subject = pupilName+ "\'s Reading Entry";
-                String body = "Dear Reading Progress Team,\n\n";
-                body += pupilName+" in "+teacherName+"\'s class has recorded a new reading diary entry.\n\n";
-                body += "Reading Information:\n\n";
-                body += "Reading Start Date: "+readingStart+"\n\n";
-                body += "Reading End Date: "+readingEnd+"\n\n";
-                body += "Book Information:\n\n";
-                body += "Book Title: "+bookTitle+"\n\n";
-                body += "Book Author :"+bookAuthor+"\n\n";
-                body += "Book Page Count: "+pageCount+"\n\n";
-                body += "Page Information:\n\n";
-                body += "Start Page: "+startPage+"\n\n";
-                body += "End Page: "+endPage+"\n\n";
-                body += "Pages Read: "+(Integer.parseInt(endPage)-Integer.parseInt(startPage))+"\n\n";
-                body += "Pupil Feedback ("+pupilName+"):\n\n";
-                body += "Pupil Enjoyment Rating: "+enjoymentRating+"/5\n\n";
-                body += "Pupil Additional Comments: "+pupilComments+"\n\n";
-                body += "Parent Feedback ("+parentName+"):\n\n";
-                body += "Parent Reading Ability Rating: "+readingAbility+"/5\n\n";
-                body += "Parent Additional Comments: "+parentComments+"\n\n";
-                body += "Teacher Feedback ("+teacherName+"):\n\n";
-                body += "Teacher Reading Ability Rating: "+readingProgress+"/5\n\n";
-                body += "Teacher Additional Comments: "+teacherComments+"\n\n";
+                String subject = pupilName+ "\'s Reading Diary Entry";
+                String body = "<p>Dear Reading Progress Team,</small><br>";
+                body += "<p>"+pupilName+" in "+teacherName+"'s class has recorded a new reading diary entry.</p><br>";
+                body += "<p>Please find the recorded details below, to transcribe into the official system:</p><br>";
+                body += "<h2>Reading Information:</h2>";
+                body += "<p>Reading Start Date: "+readingStart+"</p>";
+                body += "<p>Reading End Date: "+readingEnd+"</p><br>";
+                body += "<h2>Book Information:</h2>";
+                body += "<p>Book Title: "+bookTitle+"</p>";
+                body += "<p>Book Author: "+bookAuthor+"</p>";
+                body += "<p>Book Page Count: "+pageCount+"</p><br>";
+                body += "<h2>Page Information:</h2>";
+                body += "<p>Start Page: "+startPage+"</p>";
+                body += "<p>End Page: "+endPage+"</p>";
+                body += "<p>Pages Read: "+(Integer.parseInt(endPage)-Integer.parseInt(startPage))+"</p><br>";
+                body += "<h2>Pupil Feedback ("+pupilName+"):</h2>";
+                body += "<p>Pupil Enjoyment Rating: "+enjoymentRating+"/5</p>";
+                body += "<p>Pupil Additional Comments: "+pupilComments+"</p><br>";
+                body += "<h2>Parent Feedback ("+parentName+"):</h2>";
+                body += "<p>Parent Reading Ability Rating: "+readingAbility+"/5</p>";
+                body += "<p>Parent Additional Comments: "+parentComments+"</p><br>";
+                body += "<h2>Teacher Feedback ("+teacherName+"):</h2>";
+                body += "<p>Teacher Reading Ability Rating: "+readingProgress+"/5</p>";
+                body += "<p>Teacher Additional Comments: "+teacherComments+"</p><br>";
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                body += "Information correct as of: "+dateFormat.format(new Date())+"\n\n";
-                body += "Regards,\n\n";
-                body += "Kingston Primary School Reading Diary App";
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO,mailUri);
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-                emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+                body += "<h2><br>Information correct as of: "+dateFormat.format(new Date())+".</h2><br>";
+                body += "<p>Regards,</p><br>";
+                body += "<p>Kingston Primary School Reading Diary App</p></body></html>";
 
-                if (emailIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(emailIntent);
-                }
-                else {
-                    Message.message(getApplicationContext(), "No Email Client Apps Available");
-                }
+                Intent selectEmailIntentType = new Intent(Intent.ACTION_SENDTO);
+                selectEmailIntentType.setData(mailUri);
+                Intent sendEmailIntent = new Intent(Intent.ACTION_SEND);
+                sendEmailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"readingprogress@kingstonprimary.sch.uk"});
+                sendEmailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                sendEmailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(body));
+                sendEmailIntent.setSelector(selectEmailIntentType);
+                startActivity(Intent.createChooser(sendEmailIntent, "Email Diary Entry Data"));
             }
         });
 
