@@ -2,6 +2,8 @@ package com.tugoflaherty.readingdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -144,7 +146,21 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteDiaryEntry(v);
+                AlertDialog.Builder confirmDeleteDialogBuilder = new AlertDialog.Builder(ViewDiaryEntryActivity.this);
+                confirmDeleteDialogBuilder.setMessage("Are you sure you want to delete this reading diary entry?").setTitle("Confirm Delete")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        deleteDiaryEntry(v);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                AlertDialog confirmDeleteDialog = confirmDeleteDialogBuilder.create();
+                confirmDeleteDialog.show();
             }
         });
 
