@@ -78,7 +78,7 @@ public class ViewDiaryEntryActivity extends AppCompatActivity {
             bookTitleView.setText(bookTitle);
             bookAuthorView.setText(bookAuthor);
             readingProgressBar.setProgress(readingProgressPercentage);
-            pagesReadView.setText("Read "+(Integer.parseInt(endPage)-Integer.parseInt(startPage)) +" pages from "+startPage+" to "+endPage+" out of "+pageCount);
+            pagesReadView.setText("Read "+(Integer.parseInt(endPage)-Integer.parseInt(startPage)) +" pages. Read from page "+startPage+" to page "+endPage+" out of a total of "+pageCount+" pages");
             enjoymentRatingView.setRating(Float.parseFloat(enjoymentRating));
             pupilCommentsView.setText(pupilComments);
             readingAbilityRatingView.setRating(Float.parseFloat(readingAbility));
