@@ -22,13 +22,13 @@ public class EditDiaryEntryInformationActivity extends AppCompatActivity {
         diaryEntryId = getIntent().getStringExtra("diaryEntryId");
         helper = new myDbAdapter(this);
 
-        EditText readingStartInputField = (EditText) findViewById(R.id.edit_reading_start_datetime_input);
-        EditText readingEndInputField = (EditText) findViewById(R.id.edit_reading_end_datetime_input);
-        EditText bookTitleInputField = (EditText) findViewById(R.id.edit_book_title_input);
-        EditText bookAuthorInputField = (EditText) findViewById(R.id.edit_book_author_input);
-        EditText pageCountInputField = (EditText) findViewById(R.id.edit_page_count_input);
-        EditText startPageInputField = (EditText) findViewById(R.id.edit_start_page_input);
-        EditText endPageInputField = (EditText) findViewById(R.id.edit_end_page_input);
+        readingStartInputField = (EditText) findViewById(R.id.edit_reading_start_datetime_input);
+        readingEndInputField = (EditText) findViewById(R.id.edit_reading_end_datetime_input);
+        bookTitleInputField = (EditText) findViewById(R.id.edit_book_title_input);
+        bookAuthorInputField = (EditText) findViewById(R.id.edit_book_author_input);
+        pageCountInputField = (EditText) findViewById(R.id.edit_page_count_input);
+        startPageInputField = (EditText) findViewById(R.id.edit_start_page_input);
+        endPageInputField = (EditText) findViewById(R.id.edit_end_page_input);
         Button cancel = (Button) findViewById(R.id.edit_diary_entry_information_button_cancel);
         Button save = (Button) findViewById(R.id.edit_diary_entry_information_button_save);
         ImageButton homepageNav = (ImageButton) findViewById(R.id.edit_diary_entry_information_navigation_button_home);
